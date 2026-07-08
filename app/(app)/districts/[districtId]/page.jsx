@@ -5,6 +5,7 @@ import { getDistrictDrilldown } from "@/lib/district";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { KpiCard } from "@/components/shared/KpiCard";
 import { CaseMap } from "@/components/map/CaseMap";
+import { HotspotTimeRange } from "@/components/district/HotspotTimeRange";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Flame, TrendingUp, ShieldOff } from "lucide-react";
 
@@ -54,20 +55,7 @@ export default async function DistrictPage({ params }) {
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
             <CaseMap points={data.stationPoints} initialLat={data.center.lat} initialLng={data.center.lng} initialZoom={9.5} />
-            {data.hotspots.length === 0 ? (
-              <p className="text-xs text-muted-foreground">
-                No spatial clusters detected yet — hotspot detection needs the PostGIS geography column populated via{" "}
-                <code className="font-mono">npm run db:geo-setup</code>.
-              </p>
-            ) : (
-              <ul className="flex flex-col gap-1 text-xs text-muted-foreground">
-                {data.hotspots.slice(0, 5).map((h) => (
-                  <li key={h.clusterId}>
-                    Cluster of {h.caseCount} cases near {h.lat.toFixed(3)}, {h.lng.toFixed(3)}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <HotspotTimeRange districtId={data.districtId} initialHotspots={data.hotspots} />
           </CardContent>
         </Card>
 

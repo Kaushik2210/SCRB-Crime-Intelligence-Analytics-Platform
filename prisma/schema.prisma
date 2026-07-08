@@ -121,6 +121,7 @@ model Employee {
   ArrestsRecorded   ArrestSurrender[]    @relation("ArrestingOfficer")
   ChargesheetsFiled ChargesheetDetails[]
   AccessLogs        AccessLog[]
+  AlertActions      AlertAction[]
 
   @@map("employee")
 }
@@ -436,4 +437,25 @@ model AccessLog {
   @@index([UserID])
   @@index([Entity, RecordID])
   @@map("access_log")
+}
+
+// ---------------------------------------------------------------------------
+// Alert center workflow (dismiss / self-assign "investigating") — alerts
+// themselves (anomalies, chargesheet events) are computed on read, not
+// stored, so this table persists a per-user status keyed by a stable
+// alertKey string rather than a foreign key into a nonexistent alerts table.
+// ---------------------------------------------------------------------------
+
+model AlertAction {
+  AlertActionID Int      @id @default(autoincrement())
+  UserID        Int
+  AlertKey      String
+  Status        String // "DISMISSED" | "INVESTIGATING"
+  CreatedAt     DateTime @default(now())
+  UpdatedAt     DateTime @updatedAt
+
+  User Employee @relation(fields: [UserID], references: [EmployeeID])
+
+  @@unique([UserID, AlertKey])
+  @@map("alert_action")
 }

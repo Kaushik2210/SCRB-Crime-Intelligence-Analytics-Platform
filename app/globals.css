@@ -39,6 +39,12 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -83,40 +89,57 @@
   --sidebar-accent-foreground: #1f2a52;
   --sidebar-border: #dde1eb;
   --sidebar-ring: #8891b0;
+  /* Semantic status colors (distinct from the calm severity gradient above —
+     used for genuine success/warning/error UI states, not crime-risk tiers). */
+  --success: #1f8a5f;
+  --success-foreground: #f2fbf7;
+  --warning: #a5680f;
+  --warning-foreground: #fbf3e6;
+  --danger: #a5484a;
+  --danger-foreground: #fdf2f2;
 }
 
 .dark {
-  --background: #0d1220;
-  --foreground: #e7e9f0;
-  --card: #141a2c;
-  --card-foreground: #e7e9f0;
-  --popover: #141a2c;
-  --popover-foreground: #e7e9f0;
-  --primary: #8b96c2;
-  --primary-foreground: #0d1220;
-  --secondary: #1b2236;
-  --secondary-foreground: #e7e9f0;
-  --muted: #1b2236;
-  --muted-foreground: #9aa2ba;
-  --accent: #cba75f;
-  --accent-foreground: #2a2110;
-  --destructive: #c17274;
-  --border: #262e46;
-  --input: #262e46;
-  --ring: #5b6ea8;
-  --chart-1: #8fb5a4;
-  --chart-2: #7ba4bc;
-  --chart-3: #d3b371;
-  --chart-4: #bd914e;
-  --chart-5: #6773a8;
-  --sidebar: #141a2c;
-  --sidebar-foreground: #e7e9f0;
-  --sidebar-primary: #8b96c2;
-  --sidebar-primary-foreground: #0d1220;
-  --sidebar-accent: #1b2236;
-  --sidebar-accent-foreground: #e7e9f0;
-  --sidebar-border: #262e46;
-  --sidebar-ring: #5b6ea8;
+  /* Enterprise dark theme: deep navy base, slate-blue surfaces, electric cyan accent. */
+  --background: #0a0e1a;
+  --foreground: #e6e9f2;
+  --card: #121728;
+  --card-foreground: #e6e9f2;
+  --popover: #141a2e;
+  --popover-foreground: #e6e9f2;
+  --primary: #5470dd;
+  --primary-foreground: #f5f7ff;
+  --secondary: #1a2140;
+  --secondary-foreground: #c7cde6;
+  --muted: #161c33;
+  --muted-foreground: #8b93b3;
+  --accent: #22d3ee;
+  --accent-foreground: #04222a;
+  --destructive: #e5484d;
+  --border: #212a48;
+  --input: #212a48;
+  --ring: #22d3ee;
+  /* Calm severity gradient carried over from the light theme, tuned for dark
+     backgrounds (sage -> teal -> gold -> amber -> slate-indigo). */
+  --chart-1: #5fd4a8;
+  --chart-2: #4fb8e0;
+  --chart-3: #e0c15f;
+  --chart-4: #e0955f;
+  --chart-5: #8b93e6;
+  --sidebar: #0e1220;
+  --sidebar-foreground: #c7cde6;
+  --sidebar-primary: #5470dd;
+  --sidebar-primary-foreground: #f5f7ff;
+  --sidebar-accent: #1a2140;
+  --sidebar-accent-foreground: #e6e9f2;
+  --sidebar-border: #1c2440;
+  --sidebar-ring: #22d3ee;
+  --success: #34d399;
+  --success-foreground: #06281c;
+  --warning: #f5b95b;
+  --warning-foreground: #2a1c04;
+  --danger: #f2555b;
+  --danger-foreground: #2a0708;
 }
 
 @layer base {
@@ -129,4 +152,12 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Motion tokens shared by both themes — used by chart/KPI entrance animations. */
+:root {
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 450ms;
 }

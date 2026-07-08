@@ -1,8 +1,14 @@
 import { getSession } from "@/lib/session";
 import { getDashboardSummary } from "@/lib/dashboard";
+import { getCaseScopeFilter } from "@/lib/scope";
+import { getCaseFlowSankey, getDailyCaseCounts } from "@/lib/analytics";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { KpiCard } from "@/components/shared/KpiCard";
 import { DashboardMap } from "@/components/map/DashboardMap";
+import { TrendLineChart } from "@/components/charts/TrendLineChart";
+import { CategoryBarChart } from "@/components/charts/CategoryBarChart";
+import { CaseFlowSankey } from "@/components/charts/CaseFlowSankey";
+import { CalendarHeatmap } from "@/components/charts/CalendarHeatmap";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, TrendingUp, Flame, AlertTriangle } from "lucide-react";
 import Link from "next/link";
@@ -10,7 +16,12 @@ import Link from "next/link";
 export default async function DashboardPage() {
   const session = await getSession();
   const user = session.user;
-  const summary = await getDashboardSummary(user);
+  const scopeFilter = getCaseScopeFilter(user);
+  const [summary, caseFlow, dailyCounts] = await Promise.all([
+    getDashboardSummary(user),
+    getCaseFlowSankey(scopeFilter),
+    getDailyCaseCounts(scopeFilter),
+  ]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -86,6 +97,46 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
       </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-heading text-base">Case volume, last 12 weeks</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <TrendLineChart data={summary.trendSeries} />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-heading text-base">Top crime categories, last 90 days</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CategoryBarChart data={summary.topCategories} />
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-heading text-base">Daily case density, last 12 months</CardTitle>
+          <p className="text-xs text-muted-foreground">Darker cells indicate more cases registered that day.</p>
+        </CardHeader>
+        <CardContent>
+          <CalendarHeatmap data={dailyCounts} />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-heading text-base">Case flow: category → crime type → outcome</CardTitle>
+          <p className="text-xs text-muted-foreground">Last 180 days, scoped to your jurisdiction.</p>
+        </CardHeader>
+        <CardContent>
+          <CaseFlowSankey data={caseFlow} />
+        </CardContent>
+      </Card>
     </div>
   );
 }

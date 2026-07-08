@@ -58,6 +58,14 @@ three roles when it finishes:
 
 All seeded employees share the password `Demo@1234`.
 
+## Screens
+
+Dashboard (trend/category/flow/calendar charts) · District drill-down (time-ranged PostGIS
+hotspots) · Network & link analysis (repeat-offender + co-accused association graph) ·
+Predictive risk (severity tiles + crime-category treemap) · Alerts & trends (dismiss/
+investigate workflow) · Case Records (sortable/filterable/paginated table) · a Ctrl/Cmd+K
+command palette searching pages, districts, cases, and officers.
+
 ## Architecture notes
 
 - **Single Next.js app** serves both UI and API via Route Handlers — there's no separate
@@ -78,6 +86,16 @@ All seeded employees share the password `Demo@1234`.
   comparisons either way.
 - **`prisma/seed.js` and `prisma/geo-setup.js`** are plain CommonJS (`require`/`module.exports`)
   so they run directly via `node`, independent of Next's own ESM/JSX bundling of the app code.
+- **Alert workflow** ([lib/alerts.js](lib/alerts.js)): anomalies and chargesheet events are
+  computed on read (there's no alerts table), so per-user dismiss/investigate state is
+  persisted in `AlertAction`, keyed by a stable alert-id string rather than a foreign key.
+- **Cross-entity search** ([lib/search.js](lib/search.js), `/api/search`): backs the command
+  palette's case/officer lookup, scoped the same way as everything else — an Officer never
+  sees another jurisdiction's results.
+- **Chart/table components carrying `render` functions** (`components/cases/CasesTable.jsx`,
+  `components/shared/KpiCard.jsx` + `CountUpValue.jsx`) keep their column/render definitions
+  inside a client component — functions can't be passed as props from a Server Component to a
+  Client Component, so the server page only ever passes serializable data down.
 
 ## Testing
 

@@ -1,8 +1,10 @@
 import { getSession } from "@/lib/session";
 import { getCaseScopeFilter } from "@/lib/scope";
 import { getRiskTiles, getAnomalyAlerts } from "@/lib/risk";
+import { getCategoryTreemap } from "@/lib/analytics";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { RiskTilesView } from "@/components/risk/RiskTilesView";
+import { CategoryTreemap } from "@/components/charts/CategoryTreemap";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lightbulb } from "lucide-react";
 
@@ -11,7 +13,11 @@ export default async function RiskPage() {
   const user = session.user;
   const scopeFilter = getCaseScopeFilter(user);
 
-  const [tiles, anomalies] = await Promise.all([getRiskTiles(scopeFilter), getAnomalyAlerts(scopeFilter)]);
+  const [tiles, anomalies, treemap] = await Promise.all([
+    getRiskTiles(scopeFilter),
+    getAnomalyAlerts(scopeFilter),
+    getCategoryTreemap(scopeFilter),
+  ]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -37,6 +43,16 @@ export default async function RiskPage() {
           </CardContent>
         </Card>
       ) : null}
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-heading text-base">Crime category breakdown, last 90 days</CardTitle>
+          <p className="text-xs text-muted-foreground">Sized by case volume, grouped by crime head → sub-category.</p>
+        </CardHeader>
+        <CardContent>
+          <CategoryTreemap data={treemap} />
+        </CardContent>
+      </Card>
 
       <RiskTilesView tiles={tiles} />
     </div>
