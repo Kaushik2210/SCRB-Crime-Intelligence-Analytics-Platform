@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: ksp-crime-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ksp
+      POSTGRES_PASSWORD: ksp_dev_password
+      POSTGRES_DB: ksp_crime
+    ports:
+      - "5432:5432"
+    volumes:
+      - ksp_crime_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ksp -d ksp_crime"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  ksp_crime_db_data:
