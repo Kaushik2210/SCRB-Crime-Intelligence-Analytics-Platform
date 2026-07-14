@@ -1,11 +1,37 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), { ssr: false });
+
+/**
+ * react-force-graph-2d needs an explicit pixel width — leaving it undefined
+ * makes the canvas default to the full window width, overflowing the
+ * (clipped) container instead of matching it. Track the container's actual
+ * size via ResizeObserver so the canvas always matches its box.
+ */
+function useContainerSize() {
+  const ref = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    function measure() {
+      setWidth(el.getBoundingClientRect().width);
+    }
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  return [ref, width];
+}
 
 const NODE_COLOR_VAR = {
   accused: "--chart-4",
@@ -43,6 +69,7 @@ function useResolvedColors() {
 export function NetworkGraphView({ graph }) {
   const [selected, setSelected] = useState(null);
   const colors = useResolvedColors();
+  const [containerRef, containerWidth] = useContainerSize();
 
   const data = useMemo(
     () => ({
@@ -85,31 +112,37 @@ export function NetworkGraphView({ graph }) {
 
   return (
     <div className="grid gap-4 lg:grid-cols-3">
-      <div className="overflow-hidden rounded-lg border border-border lg:col-span-2" style={{ height: 480 }}>
-        <ForceGraph2D
-          graphData={data}
-          nodeId="id"
-          nodeVal="val"
-          nodeLabel={(n) => n.label ?? ""}
-          nodeColor={(n) => {
-            const base = colors[n.type ?? "case"] ?? "#888888";
-            return isDimmed(n.id) ? withAlpha(base, "33") : base;
-          }}
-          linkColor={(l) => {
-            const sourceId = typeof l.source === "object" ? l.source.id : l.source;
-            const targetId = typeof l.target === "object" ? l.target.id : l.target;
-            const dimmed = focusIds ? !(focusIds.has(sourceId) && focusIds.has(targetId)) : false;
-            const base = l.type === "associate_of" ? colors.accent : colors.border;
-            return dimmed ? withAlpha(base, "22") : base;
-          }}
-          linkWidth={(l) => (l.type === "associate_of" ? Math.min(1 + (l.weight ?? 1), 5) : 1)}
-          linkLineDash={(l) => (l.type === "associate_of" ? [] : [2, 2])}
-          onNodeClick={(n) => setSelected(n)}
-          onBackgroundClick={() => setSelected(null)}
-          width={undefined}
-          height={480}
-          cooldownTicks={80}
-        />
+      <div
+        ref={containerRef}
+        className="overflow-hidden rounded-lg border border-border lg:col-span-2"
+        style={{ height: 480 }}
+      >
+        {containerWidth > 0 ? (
+          <ForceGraph2D
+            graphData={data}
+            nodeId="id"
+            nodeVal="val"
+            nodeLabel={(n) => n.label ?? ""}
+            nodeColor={(n) => {
+              const base = colors[n.type ?? "case"] ?? "#888888";
+              return isDimmed(n.id) ? withAlpha(base, "33") : base;
+            }}
+            linkColor={(l) => {
+              const sourceId = typeof l.source === "object" ? l.source.id : l.source;
+              const targetId = typeof l.target === "object" ? l.target.id : l.target;
+              const dimmed = focusIds ? !(focusIds.has(sourceId) && focusIds.has(targetId)) : false;
+              const base = l.type === "associate_of" ? colors.accent : colors.border;
+              return dimmed ? withAlpha(base, "22") : base;
+            }}
+            linkWidth={(l) => (l.type === "associate_of" ? Math.min(1 + (l.weight ?? 1), 5) : 1)}
+            linkLineDash={(l) => (l.type === "associate_of" ? [] : [2, 2])}
+            onNodeClick={(n) => setSelected(n)}
+            onBackgroundClick={() => setSelected(null)}
+            width={containerWidth}
+            height={480}
+            cooldownTicks={80}
+          />
+        ) : null}
       </div>
       <Card>
         <CardContent className="flex flex-col gap-3 pt-6 text-sm">
@@ -150,7 +183,7 @@ export function NetworkGraphView({ graph }) {
                   </p>
                   <div className="flex flex-wrap gap-1">
                     {selected.modusOperandi.map((mo) => (
-                      <span key={mo} className="rounded-full bg-accent/15 px-2 py-0.5 text-xs text-accent-foreground/80">
+                      <span key={mo} className="rounded-full bg-accent/15 px-2 py-0.5 text-xs text-accent">
                         {mo}
                       </span>
                     ))}

@@ -7,7 +7,7 @@ export function AccessTierBadge({ unmasked }) {
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium",
         unmasked
-          ? "border-accent/40 bg-accent/10 text-accent-foreground/80"
+          ? "border-accent/40 bg-accent/10 text-accent"
           : "border-border bg-secondary text-muted-foreground"
       )}
       title={

@@ -32,6 +32,7 @@ import {
   Sun,
   Moon,
   Table2,
+  Menu,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -92,6 +93,12 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
   const { theme, setTheme } = useTheme();
   const [collapsed, toggleCollapsed] = useSidebarCollapsed();
   const [commandOpen, setCommandOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Close the mobile drawer on route change so navigating never leaves it open.
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
   // next-themes can't know the resolved theme during SSR; wait for mount before
   // rendering a theme-dependent icon to avoid a hydration mismatch.
   const [mounted, setMounted] = useState(false);
@@ -108,6 +115,12 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
+  // The mobile drawer always shows full labels regardless of the desktop
+  // collapse preference — it's a temporary overlay, never icon-only. The
+  // hamburger that sets mobileOpen is itself hidden on desktop (md:hidden),
+  // so mobileOpen can only be true there via the mobile drawer.
+  const iconOnly = collapsed && !mobileOpen;
+
   const initials = user.name
     .split(" ")
     .map((p) => p[0])
@@ -119,17 +132,37 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
     <div className="flex min-h-screen bg-background">
       <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} districts={districts} />
 
-      {/* Sidebar */}
+      {/* Backdrop for the mobile drawer — tapping it closes the sidebar. */}
+      {mobileOpen ? (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 md:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
+      ) : null}
+
+      {/* Sidebar: a sticky in-flow column on md+ screens, a slide-in overlay
+          drawer below that. `fixed`/`sticky` (and the left-offset toggle) are
+          driven by `max-md:`/`md:` variants that are mutually exclusive by
+          media query, rather than relying on cascade order between a plain
+          and a responsive utility — Tailwind doesn't guarantee the responsive
+          one wins, which previously left the sidebar `position: fixed` (out
+          of flow) at desktop widths too, overlapping the main content instead
+          of pushing it over. Deliberately CSS-only (no JS viewport check):
+          that avoids an SSR-vs-mobile hydration flash where the full desktop
+          layout would flicker briefly before a client-side check corrected
+          it. */}
       <aside
         className={cn(
-          "sticky top-0 flex h-screen shrink-0 flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-base",
-          collapsed ? "w-[68px]" : "w-60"
+          "max-md:fixed max-md:inset-y-0 max-md:z-40 md:sticky md:top-0 md:z-auto flex h-screen w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar max-md:transition-[left] md:transition-[width]",
+          mobileOpen ? "max-md:left-0" : "max-md:-left-60",
+          collapsed ? "md:w-[68px]" : "md:w-60"
         )}
-        style={{ transitionTimingFunction: "var(--ease-out-soft)" }}
+        style={{ transitionDuration: "var(--duration-base)", transitionTimingFunction: "var(--ease-out-soft)" }}
       >
-        <div className={cn("flex h-16 items-center gap-2 border-b border-sidebar-border px-4", collapsed && "justify-center px-0")}>
+        <div className={cn("flex h-16 items-center gap-2 border-b border-sidebar-border px-4", iconOnly && "justify-center px-0")}>
           <ShieldCheck className="size-5 shrink-0 text-accent" />
-          {!collapsed ? (
+          {!iconOnly ? (
             <span className="truncate font-heading text-sm font-semibold tracking-tight text-sidebar-foreground">
               SCRB Intelligence
             </span>
@@ -143,10 +176,10 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
               <Link
                 key={item.href}
                 href={item.href}
-                title={collapsed ? item.label : undefined}
+                title={iconOnly ? item.label : undefined}
                 className={cn(
                   "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                  collapsed && "justify-center px-0",
+                  iconOnly && "justify-center px-0",
                   active
                     ? "bg-sidebar-accent text-sidebar-accent-foreground"
                     : "text-sidebar-foreground/70 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
@@ -156,19 +189,19 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
                   <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-accent" />
                 ) : null}
                 <item.icon className="size-4.5 shrink-0" />
-                {!collapsed ? <span className="truncate">{item.label}</span> : null}
+                {!iconOnly ? <span className="truncate">{item.label}</span> : null}
               </Link>
             );
           })}
         </nav>
 
-        <div className="border-t border-sidebar-border p-2.5">
+        <div className="border-t border-sidebar-border p-2.5 md:block hidden">
           <Button
             variant="ghost"
-            size={collapsed ? "icon" : "default"}
+            size={iconOnly ? "icon" : "default"}
             className="w-full justify-center gap-2 text-sidebar-foreground/70 hover:text-sidebar-foreground"
             onClick={toggleCollapsed}
-            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            title={iconOnly ? "Expand sidebar" : "Collapse sidebar"}
           >
             {collapsed ? <ChevronsRight className="size-4" /> : <ChevronsLeft className="size-4" />}
             {!collapsed ? <span>Collapse</span> : null}
@@ -179,7 +212,18 @@ export function AppShell({ user, alerts = [], districts = [], children }) {
       {/* Main column */}
       <div className="flex min-h-screen flex-1 flex-col">
         <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-border bg-background/95 px-4 backdrop-blur sm:px-6">
-          <Breadcrumb pathname={pathname ?? ""} />
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileOpen(true)}
+              title="Open navigation"
+            >
+              <Menu className="size-4" />
+            </Button>
+            <Breadcrumb pathname={pathname ?? ""} />
+          </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
             <button
