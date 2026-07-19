@@ -5,6 +5,9 @@ const nextConfig = {
   // check, causing a visible remount/flash on every navigation. StrictMode
   // never runs in production, so this doesn't affect deployed behavior.
   reactStrictMode: false,
+  // Catalyst's AppSail build/pack scripts (app-config.json) expect the build
+  // output under "dist", per Catalyst's official Next.js-on-AppSail guide.
+  distDir: "dist",
 };
 
 export default nextConfig;

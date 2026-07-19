@@ -1,0 +1,14 @@
+{
+  "command": "npm run start",
+  "stack": "node18",
+  "env_variables": {
+    "NEXTAUTH_URL": "",
+    "NEXTAUTH_SECRET": "",
+    "NEXT_PUBLIC_MAPBOX_TOKEN": ""
+  },
+  "memory": 256,
+  "scripts": {
+    "preserve": "npm install && npm run build",
+    "predeploy": "npm install && npm run build"
+  }
+}
