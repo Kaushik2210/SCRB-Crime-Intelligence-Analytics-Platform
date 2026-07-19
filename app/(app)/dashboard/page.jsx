@@ -10,7 +10,8 @@ import { CategoryBarChart } from "@/components/charts/CategoryBarChart";
 import { CaseFlowSankey } from "@/components/charts/CaseFlowSankey";
 import { CalendarHeatmap } from "@/components/charts/CalendarHeatmap";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, TrendingUp, Flame, AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { FileText, TrendingUp, Flame, AlertTriangle, Download } from "lucide-react";
 import Link from "next/link";
 
 export default async function DashboardPage() {
@@ -31,6 +32,12 @@ export default async function DashboardPage() {
           user.isStateLevel
             ? "Aggregated cross-district intelligence for the SCRB analyst view."
             : "Cases, hotspots, and alerts scoped to your jurisdiction."
+        }
+        actions={
+          <Button variant="outline" size="sm" render={<a href="/api/reports/intelligence" download />}>
+            <Download className="size-4" />
+            Download Intelligence Report
+          </Button>
         }
       />
 

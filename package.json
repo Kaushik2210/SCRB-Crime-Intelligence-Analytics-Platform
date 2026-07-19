@@ -11,6 +11,7 @@
     "db:geo-setup": "node prisma/geo-setup.js",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
+    "db:seed:catalyst": "node scripts/seed.js",
     "test": "vitest run"
   },
   "prisma": {
@@ -26,11 +27,11 @@
     "express": "^4.21.2",
     "lucide-react": "^1.23.0",
     "mapbox-gl": "^3.25.0",
+    "ml-random-forest": "^2.1.0",
     "next": "^14.2.35",
     "next-auth": "^4.24.11",
     "next-themes": "^0.4.6",
     "prisma": "^5.22.0",
-    "zcatalyst-sdk-node": "^3.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-force-graph-2d": "^1.29.1",
@@ -40,6 +41,7 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
     "tw-animate-css": "^1.4.0",
+    "zcatalyst-sdk-node": "^3.4.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

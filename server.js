@@ -20,8 +20,16 @@ app.prepare().then(() => {
   // down this same request's call stack can call getCatalystApp()/getZCQL()
   // (see lib/catalystContext.js) without req being threaded through manually.
   server.use((req, res, next) => {
-    const catalystApp = catalyst.initialize(req);
-    catalystContext.run(catalystApp, () => next());
+    try {
+      const catalystApp = catalyst.initialize(req);
+      catalystContext.run(catalystApp, () => next());
+    } catch (err) {
+      // Only reachable outside real Catalyst infra (e.g. this env var isn't
+      // set locally) — fail the one request, not the whole server process.
+      console.error("Catalyst SDK initialization failed for this request:", err);
+      res.statusCode = 500;
+      res.end("Catalyst SDK failed to initialize for this request. Are you running under Catalyst AppSail/serve?");
+    }
   });
 
   server.all("*", (req, res) => handle(req, res));

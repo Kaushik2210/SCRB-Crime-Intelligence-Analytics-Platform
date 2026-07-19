@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST='{"components\\\\network\\\\NetworkGraphView.jsx -> react-force-graph-2d":{"id":63142,"files":["static/chunks/773-b227fd5d9ab9c6f4.js","static/chunks/142.e21ecc69116413d6.js"]},"node_modules\\\\@vis.gl\\\\react-mapbox\\\\dist\\\\components\\\\map.js -> mapbox-gl":{"id":42520,"files":["static/chunks/c36f3faa.003c8ce6d09b1dce.js"]}}';

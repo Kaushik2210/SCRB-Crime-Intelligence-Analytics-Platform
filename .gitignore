@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+# Catalyst AppSail build output (distDir in next.config.mjs)
+/dist/
 
 # production
 /build

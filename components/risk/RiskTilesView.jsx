@@ -4,6 +4,10 @@ import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { SeverityBadge } from "@/components/shared/SeverityBadge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+
+const TREND_ICON = { rising: TrendingUp, falling: TrendingDown, stable: Minus };
+const TREND_LABEL = { rising: "Forecast rising", falling: "Forecast easing", stable: "Forecast stable" };
 
 export function RiskTilesView({ tiles }) {
   const districts = useMemo(() => {
@@ -56,6 +60,15 @@ export function RiskTilesView({ tiles }) {
               <p className="text-xs text-muted-foreground">
                 {tile.recentCount} cases in the last 90 days · typical {tile.baselineAvgPer90}
               </p>
+              {tile.trendDirection ? (
+                <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  {(() => {
+                    const Icon = TREND_ICON[tile.trendDirection];
+                    return <Icon className="size-3.5 shrink-0" />;
+                  })()}
+                  {TREND_LABEL[tile.trendDirection]} — ~{tile.predictedNextCount} projected next quarter
+                </p>
+              ) : null}
             </CardContent>
           </Card>
         ))}
