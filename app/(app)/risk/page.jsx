@@ -1,6 +1,6 @@
 import { getSession } from "@/lib/session";
 import { getCaseScopeFilter } from "@/lib/scope";
-import { getRiskTiles, getAnomalyAlerts } from "@/lib/risk";
+import { getRiskTiles, anomaliesFromTiles } from "@/lib/risk";
 import { getCategoryTreemap } from "@/lib/analytics";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { RiskTilesView } from "@/components/risk/RiskTilesView";
@@ -13,11 +13,8 @@ export default async function RiskPage() {
   const user = session.user;
   const scopeFilter = getCaseScopeFilter(user);
 
-  const [tiles, anomalies, treemap] = await Promise.all([
-    getRiskTiles(scopeFilter),
-    getAnomalyAlerts(scopeFilter),
-    getCategoryTreemap(scopeFilter),
-  ]);
+  const [tiles, treemap] = await Promise.all([getRiskTiles(scopeFilter), getCategoryTreemap(scopeFilter)]);
+  const anomalies = anomaliesFromTiles(tiles);
 
   return (
     <div className="flex flex-col gap-6">

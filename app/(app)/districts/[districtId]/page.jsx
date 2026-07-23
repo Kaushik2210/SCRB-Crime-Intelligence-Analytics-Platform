@@ -1,13 +1,20 @@
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/session";
 import { resolveAllowedDistrictId } from "@/lib/scope";
 import { getDistrictDrilldown } from "@/lib/district";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { KpiCard } from "@/components/shared/KpiCard";
-import { CaseMap } from "@/components/map/CaseMap";
 import { HotspotTimeRange } from "@/components/district/HotspotTimeRange";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Flame, TrendingUp, ShieldOff } from "lucide-react";
+
+// See app/(app)/dashboard/page.jsx for why mapbox-gl is dynamically imported
+// with ssr:false instead of a static import.
+const CaseMap = dynamic(() => import("@/components/map/CaseMap").then((m) => m.CaseMap), {
+  ssr: false,
+  loading: () => <div className="h-[420px] animate-pulse rounded-lg bg-muted" />,
+});
 
 export default async function DistrictPage({ params }) {
   const { districtId: districtIdParam } = await params;

@@ -1,17 +1,17 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/reports/intelligence/route": "app/api/reports/intelligence/route.js",
   "/api/alerts/action/route": "app/api/alerts/action/route.js",
-  "/api/search/route": "app/api/search/route.js",
+  "/api/reports/intelligence/route": "app/api/reports/intelligence/route.js",
   "/api/districts/[districtId]/hotspots/route": "app/api/districts/[districtId]/hotspots/route.js",
-  "/login/page": "app/login/page.js",
+  "/api/search/route": "app/api/search/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/page": "app/login/page.js",
   "/page": "app/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/(app)/alerts/page": "app/(app)/alerts/page.js",
-  "/(app)/districts/[districtId]/page": "app/(app)/districts/[districtId]/page.js",
-  "/(app)/cases/page": "app/(app)/cases/page.js",
-  "/(app)/risk/page": "app/(app)/risk/page.js",
   "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
-  "/(app)/network/page": "app/(app)/network/page.js"
+  "/(app)/districts/[districtId]/page": "app/(app)/districts/[districtId]/page.js",
+  "/(app)/network/page": "app/(app)/network/page.js",
+  "/(app)/cases/page": "app/(app)/cases/page.js",
+  "/(app)/risk/page": "app/(app)/risk/page.js"
 }

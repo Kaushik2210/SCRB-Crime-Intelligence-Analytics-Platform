@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/session";
-import { getCaseScopeFilter } from "@/lib/scope";
 import { getDashboardSummary } from "@/lib/dashboard";
-import { getRiskTiles, getAnomalyAlerts } from "@/lib/risk";
 import { buildIntelligenceReportHtml } from "@/lib/reportHtml";
 import { renderHtmlToPdfBuffer } from "@/lib/pdfReport";
 
@@ -10,12 +8,12 @@ export async function GET() {
   const user = await getSessionUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const scopeFilter = getCaseScopeFilter(user);
-  const [summary, riskTiles, anomalies] = await Promise.all([
-    getDashboardSummary(user),
-    getRiskTiles(scopeFilter),
-    getAnomalyAlerts(scopeFilter),
-  ]);
+  // getDashboardSummary already computes riskTiles/anomalies internally and
+  // returns them (additive fields) — reuse those instead of calling
+  // getRiskTiles/getAnomalyAlerts again, which would retrain
+  // lib/riskModel.js's Random Forest a second time for this one request.
+  const summary = await getDashboardSummary(user);
+  const { riskTiles, anomalies } = summary;
 
   const html = buildIntelligenceReportHtml({ session: user, summary, riskTiles, anomalies });
   const pdfBuffer = await renderHtmlToPdfBuffer(html);

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-const createManyMock = vi.fn();
-vi.mock("@/lib/db", () => ({
-  prisma: { accessLog: { createMany: (...args) => createManyMock(...args) } },
+const insertRowsMock = vi.fn();
+vi.mock("@/lib/zcql", () => ({
+  getTable: () => ({ insertRows: (...args) => insertRowsMock(...args) }),
 }));
 
 const { maskVictim, maskVictims, logUnmaskedVictimAccess } = await import("@/lib/masking");
@@ -26,7 +26,7 @@ function makeSession(overrides) {
 }
 
 beforeEach(() => {
-  createManyMock.mockClear();
+  insertRowsMock.mockClear();
 });
 
 describe("maskVictim", () => {
@@ -57,23 +57,23 @@ describe("logUnmaskedVictimAccess", () => {
   it("writes an audit-trail row when a cleared user views unmasked victim data", async () => {
     const session = makeSession({ victimClearance: true, employeeId: 99 });
     await logUnmaskedVictimAccess(session, [5, 6]);
-    expect(createManyMock).toHaveBeenCalledTimes(1);
-    const arg = createManyMock.mock.calls[0][0];
-    expect(arg.data).toEqual([
-      { UserID: 99, Entity: "Victim", RecordID: 5, Action: "VIEW_UNMASKED" },
-      { UserID: 99, Entity: "Victim", RecordID: 6, Action: "VIEW_UNMASKED" },
+    expect(insertRowsMock).toHaveBeenCalledTimes(1);
+    const rows = insertRowsMock.mock.calls[0][0];
+    expect(rows).toEqual([
+      { UserID: 99, Entity: "Victim", RecordID: 5, Action: "VIEW_UNMASKED", CreatedAt: expect.any(String) },
+      { UserID: 99, Entity: "Victim", RecordID: 6, Action: "VIEW_UNMASKED", CreatedAt: expect.any(String) },
     ]);
   });
 
   it("does not write an audit row for a masked (non-cleared) session", async () => {
     const session = makeSession({ victimClearance: false });
     await logUnmaskedVictimAccess(session, [5, 6]);
-    expect(createManyMock).not.toHaveBeenCalled();
+    expect(insertRowsMock).not.toHaveBeenCalled();
   });
 
   it("does not write an audit row when there are no victim ids", async () => {
     const session = makeSession({ victimClearance: true });
     await logUnmaskedVictimAccess(session, []);
-    expect(createManyMock).not.toHaveBeenCalled();
+    expect(insertRowsMock).not.toHaveBeenCalled();
   });
 });
