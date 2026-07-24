@@ -1,0 +1,451 @@
+[debug] [2026-07-24T14:24:28.565Z] : 
+[debug] [2026-07-24T14:24:28.566Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:24:28.567Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Kaushik\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve --no-open --ignore-scripts
+[debug] [2026-07-24T14:24:28.567Z] : CLI Version:  1.27.0
+[debug] [2026-07-24T14:24:28.567Z] : Platform:     win32
+[debug] [2026-07-24T14:24:28.567Z] : Node Version: v22.18.0
+[debug] [2026-07-24T14:24:28.567Z] : Time:         Fri Jul 24 2026 19:54:28 GMT+0530 (India Standard Time)
+[debug] [2026-07-24T14:24:28.567Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:24:28.568Z] : 
+[debug] [2026-07-24T14:24:30.865Z] : > authorizing via signed-in user option
+[debug] [2026-07-24T14:24:30.865Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.apigateway.apis.READ","ZohoCatalyst.apigateway.READ","ZohoCatalyst.segments.ALL","ZohoCatalyst.cache.READ","ZohoCatalyst.cache.CREATE","ZohoCatalyst.cache.DELETE","ZohoCatalyst.projects.ALL","ZohoCatalyst.cron.ALL","ZohoCatalyst.zcql.CREATE","ZohoCatalyst.projects.users.READ","ZohoCatalyst.projects.users.CREATE","ZohoCatalyst.projects.users.DELETE","ZohoCatalyst.projects.users.UPDATE","ZohoCatalyst.authentication.CREATE","ZohoCatalyst.email.CREATE","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL","ZohoCatalyst.tables.columns.ALL","ZohoCatalyst.tables.bulk.CREATE","ZohoCatalyst.tables.bulk.READ","ZohoCatalyst.folders.ALL","ZohoCatalyst.files.CREATE","ZohoCatalyst.files.READ","ZohoCatalyst.files.DELETE","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.eventlistners.ALL","ZohoCatalyst.eventlisteners.produce","ZohoCatalyst.security.rules.Read","ZohoCatalyst.security.rules.Update","ZohoCatalyst.notifications.mobile","ZohoCatalyst.notifications.web","ZohoCatalyst.search.READ","ZohoCatalyst.mlkit.READ","QuickML.deployment.READ","ZohoCatalyst.pdfshot.execute","ZohoCatalyst.grid.READ","ZohoCatalyst.grid.terminate","ZohoCatalyst.circuits.execution.DELETE","ZohoCatalyst.circuits.execution.READ","ZohoCatalyst.circuits.execute","ZohoCatalyst.appsail.Read","ZohoCatalyst.jobpool.READ","ZohoCatalyst.job.ALL","ZohoCatalyst.nosql.READ","ZohoCatalyst.nosql.rows.ALL"]
+[debug] [2026-07-24T14:24:31.005Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001 
+
+[debug] [2026-07-24T14:24:31.291Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:24:31 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:24:31.298Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001/environment 
+
+[debug] [2026-07-24T14:24:31.390Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:24:31 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:24:31.631Z] : http port : '3000' is not available. Hence port '3001' will be used instead.
+[debug] [2026-07-24T14:24:31.637Z] : No basic functions to add
+[debug] [2026-07-24T14:24:31.726Z] : No API Gateway configuration found. Skipping API Gateway rules
+[info] [2026-07-24T14:24:31.843Z] : 
+[info] [2026-07-24T14:24:31.843Z] :  >>>>>>>>>>>>>> AppSail <<<<<<<<<<<<<< 
+[info] [2026-07-24T14:24:31.844Z] : ℹ ksp-crime-platform: http://localhost:3001
+[info] [2026-07-24T14:24:31.844Z] : 
+[info] [2026-07-24T14:25:13.293Z] : [1784903113292]  Appsail[ksp-crime-platform]  "GET"  "/"
+[info] [2026-07-24T14:25:15.430Z] : [1784903115430]  Appsail[ksp-crime-platform]  "GET"  "/login"
+[info] [2026-07-24T14:25:19.079Z] : [1784903119079]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[debug] [2026-07-24T14:26:16.360Z] : 
+[debug] [2026-07-24T14:26:16.361Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:26:16.361Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Kaushik\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve --no-open --ignore-scripts
+[debug] [2026-07-24T14:26:16.362Z] : CLI Version:  1.27.0
+[debug] [2026-07-24T14:26:16.362Z] : Platform:     win32
+[debug] [2026-07-24T14:26:16.363Z] : Node Version: v22.18.0
+[debug] [2026-07-24T14:26:16.363Z] : Time:         Fri Jul 24 2026 19:56:16 GMT+0530 (India Standard Time)
+[debug] [2026-07-24T14:26:16.363Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:26:16.363Z] : 
+[debug] [2026-07-24T14:26:19.739Z] : > authorizing via signed-in user option
+[debug] [2026-07-24T14:26:19.741Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.apigateway.apis.READ","ZohoCatalyst.apigateway.READ","ZohoCatalyst.segments.ALL","ZohoCatalyst.cache.READ","ZohoCatalyst.cache.CREATE","ZohoCatalyst.cache.DELETE","ZohoCatalyst.projects.ALL","ZohoCatalyst.cron.ALL","ZohoCatalyst.zcql.CREATE","ZohoCatalyst.projects.users.READ","ZohoCatalyst.projects.users.CREATE","ZohoCatalyst.projects.users.DELETE","ZohoCatalyst.projects.users.UPDATE","ZohoCatalyst.authentication.CREATE","ZohoCatalyst.email.CREATE","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL","ZohoCatalyst.tables.columns.ALL","ZohoCatalyst.tables.bulk.CREATE","ZohoCatalyst.tables.bulk.READ","ZohoCatalyst.folders.ALL","ZohoCatalyst.files.CREATE","ZohoCatalyst.files.READ","ZohoCatalyst.files.DELETE","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.eventlistners.ALL","ZohoCatalyst.eventlisteners.produce","ZohoCatalyst.security.rules.Read","ZohoCatalyst.security.rules.Update","ZohoCatalyst.notifications.mobile","ZohoCatalyst.notifications.web","ZohoCatalyst.search.READ","ZohoCatalyst.mlkit.READ","QuickML.deployment.READ","ZohoCatalyst.pdfshot.execute","ZohoCatalyst.grid.READ","ZohoCatalyst.grid.terminate","ZohoCatalyst.circuits.execution.DELETE","ZohoCatalyst.circuits.execution.READ","ZohoCatalyst.circuits.execute","ZohoCatalyst.appsail.Read","ZohoCatalyst.jobpool.READ","ZohoCatalyst.job.ALL","ZohoCatalyst.nosql.READ","ZohoCatalyst.nosql.rows.ALL"]
+[debug] [2026-07-24T14:26:19.880Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001 
+
+[debug] [2026-07-24T14:26:20.090Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:26:20 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:26:20.093Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001/environment 
+
+[debug] [2026-07-24T14:26:20.142Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:26:20 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:26:20.425Z] : http port : '3000' is not available. Hence port '3002' will be used instead.
+[debug] [2026-07-24T14:26:20.433Z] : http port : '4600' is not available. Hence port '4601' will be used instead.
+[debug] [2026-07-24T14:26:20.433Z] : No basic functions to add
+[debug] [2026-07-24T14:26:20.473Z] : No API Gateway configuration found. Skipping API Gateway rules
+[info] [2026-07-24T14:26:20.595Z] : 
+[info] [2026-07-24T14:26:20.595Z] :  >>>>>>>>>>>>>> AppSail <<<<<<<<<<<<<< 
+[info] [2026-07-24T14:26:20.597Z] : ℹ ksp-crime-platform: http://localhost:3002
+[info] [2026-07-24T14:26:20.597Z] : 
+[info] [2026-07-24T14:27:02.662Z] : [1784903222662]  Appsail[ksp-crime-platform]  "GET"  "/"
+[info] [2026-07-24T14:27:04.805Z] : [1784903224805]  Appsail[ksp-crime-platform]  "GET"  "/login"
+[info] [2026-07-24T14:27:06.503Z] : [1784903226502]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[debug] [2026-07-24T14:27:48.120Z] : 
+[debug] [2026-07-24T14:27:48.123Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:27:48.125Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Kaushik\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve --no-open --ignore-scripts
+[debug] [2026-07-24T14:27:48.125Z] : CLI Version:  1.27.0
+[debug] [2026-07-24T14:27:48.125Z] : Platform:     win32
+[debug] [2026-07-24T14:27:48.126Z] : Node Version: v22.18.0
+[debug] [2026-07-24T14:27:48.126Z] : Time:         Fri Jul 24 2026 19:57:48 GMT+0530 (India Standard Time)
+[debug] [2026-07-24T14:27:48.126Z] : ----------------------------------------------------------------------
+[debug] [2026-07-24T14:27:48.126Z] : 
+[debug] [2026-07-24T14:27:52.549Z] : > authorizing via signed-in user option
+[debug] [2026-07-24T14:27:52.550Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.apigateway.apis.READ","ZohoCatalyst.apigateway.READ","ZohoCatalyst.segments.ALL","ZohoCatalyst.cache.READ","ZohoCatalyst.cache.CREATE","ZohoCatalyst.cache.DELETE","ZohoCatalyst.projects.ALL","ZohoCatalyst.cron.ALL","ZohoCatalyst.zcql.CREATE","ZohoCatalyst.projects.users.READ","ZohoCatalyst.projects.users.CREATE","ZohoCatalyst.projects.users.DELETE","ZohoCatalyst.projects.users.UPDATE","ZohoCatalyst.authentication.CREATE","ZohoCatalyst.email.CREATE","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL","ZohoCatalyst.tables.columns.ALL","ZohoCatalyst.tables.bulk.CREATE","ZohoCatalyst.tables.bulk.READ","ZohoCatalyst.folders.ALL","ZohoCatalyst.files.CREATE","ZohoCatalyst.files.READ","ZohoCatalyst.files.DELETE","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.eventlistners.ALL","ZohoCatalyst.eventlisteners.produce","ZohoCatalyst.security.rules.Read","ZohoCatalyst.security.rules.Update","ZohoCatalyst.notifications.mobile","ZohoCatalyst.notifications.web","ZohoCatalyst.search.READ","ZohoCatalyst.mlkit.READ","QuickML.deployment.READ","ZohoCatalyst.pdfshot.execute","ZohoCatalyst.grid.READ","ZohoCatalyst.grid.terminate","ZohoCatalyst.circuits.execution.DELETE","ZohoCatalyst.circuits.execution.READ","ZohoCatalyst.circuits.execute","ZohoCatalyst.appsail.Read","ZohoCatalyst.jobpool.READ","ZohoCatalyst.job.ALL","ZohoCatalyst.nosql.READ","ZohoCatalyst.nosql.rows.ALL"]
+[debug] [2026-07-24T14:27:52.703Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001 
+
+[debug] [2026-07-24T14:27:52.961Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:27:53 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:27:52.965Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/52881000000019001/environment 
+
+[debug] [2026-07-24T14:27:53.061Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 14:27:53 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-07-24T14:27:53.320Z] : http port : '3000' is not available. Hence port '3001' will be used instead.
+[debug] [2026-07-24T14:27:53.325Z] : No basic functions to add
+[debug] [2026-07-24T14:27:53.355Z] : No API Gateway configuration found. Skipping API Gateway rules
+[info] [2026-07-24T14:27:53.466Z] : 
+[info] [2026-07-24T14:27:53.466Z] :  >>>>>>>>>>>>>> AppSail <<<<<<<<<<<<<< 
+[info] [2026-07-24T14:27:53.466Z] : ℹ ksp-crime-platform: http://localhost:3001
+[info] [2026-07-24T14:27:53.467Z] : 
+[info] [2026-07-24T14:28:22.645Z] : [1784903302644]  Appsail[ksp-crime-platform]  "GET"  "/"
+[info] [2026-07-24T14:28:25.097Z] : [1784903305096]  Appsail[ksp-crime-platform]  "GET"  "/login"
+[info] [2026-07-24T14:28:26.957Z] : [1784903306957]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:28:28.695Z] : [1784903308694]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/providers"
+[info] [2026-07-24T14:28:37.112Z] : [1784903317111]  Appsail[ksp-crime-platform]  "GET"  "/login"
+[info] [2026-07-24T14:28:37.366Z] : [1784903317366]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T14:28:41.562Z] : [1784903321562]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903321090"
+[info] [2026-07-24T14:28:41.869Z] : [1784903321869]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784903321090"
+[info] [2026-07-24T14:28:41.872Z] : [1784903321871]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784903321090"
+[info] [2026-07-24T14:28:41.901Z] : [1784903321901]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T14:28:42.327Z] : [1784903322326]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/26d4368bf94c0ec4-s.p.woff2"
+[info] [2026-07-24T14:28:42.329Z] : [1784903322329]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/e4af272ccee01ff0-s.p.woff2"
+[info] [2026-07-24T14:28:42.677Z] : [1784903322677]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/98e207f02528a563-s.p.woff2"
+[info] [2026-07-24T14:28:42.678Z] : [1784903322678]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T14:28:42.685Z] : [1784903322685]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T14:28:43.010Z] : [1784903323010]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T14:28:43.615Z] : [1784903323615]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:28:43.760Z] : [1784903323760]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T14:28:43.870Z] : [1784903323870]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T14:28:44.012Z] : [1784903324012]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:28:55.461Z] : [1784903335461]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/d3ebbfd689654d3a-s.p.woff2"
+[info] [2026-07-24T14:33:55.050Z] : [1784903635050]  Appsail[ksp-crime-platform]  "GET"  "/"
+[info] [2026-07-24T14:33:55.435Z] : [1784903635435]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903635126"
+[info] [2026-07-24T14:33:55.440Z] : [1784903635440]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784903635126"
+[info] [2026-07-24T14:33:55.760Z] : [1784903635759]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/26d4368bf94c0ec4-s.p.woff2"
+[info] [2026-07-24T14:33:55.764Z] : [1784903635763]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/e4af272ccee01ff0-s.p.woff2"
+[info] [2026-07-24T14:33:55.768Z] : [1784903635767]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784903635126"
+[info] [2026-07-24T14:33:55.770Z] : [1784903635770]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T14:33:55.899Z] : [1784903635899]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T14:33:55.903Z] : [1784903635903]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/page.js"
+[info] [2026-07-24T14:33:57.287Z] : [1784903637286]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:33:57.318Z] : [1784903637318]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:34:00.128Z] : [1784903640127]  Appsail[ksp-crime-platform]  "GET"  "/login?_rsc=19zvn"
+[info] [2026-07-24T14:34:00.518Z] : [1784903640517]  Appsail[ksp-crime-platform]  "GET"  "/login?_rsc=tlsy5"
+[info] [2026-07-24T14:34:00.770Z] : [1784903640770]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/login/page.js"
+[info] [2026-07-24T14:34:00.897Z] : [1784903640896]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/d3ebbfd689654d3a-s.p.woff2"
+[info] [2026-07-24T14:34:16.698Z] : [1784903656698]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/providers"
+[info] [2026-07-24T14:34:16.962Z] : [1784903656962]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/csrf"
+[info] [2026-07-24T14:34:17.106Z] : [1784903657105]  Appsail[ksp-crime-platform]  "POST"  "/api/auth/callback/credentials"
+[info] [2026-07-24T14:34:17.311Z] : [1784903657311]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:34:17.468Z] : [1784903657468]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1obve"
+[info] [2026-07-24T14:34:17.785Z] : [1784903657785]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=15dr1"
+[info] [2026-07-24T14:34:18.100Z] : [1784903658100]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903657812"
+[info] [2026-07-24T14:34:18.164Z] : [1784903658164]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T14:34:18.166Z] : [1784903658166]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T14:34:18.841Z] : [1784903658840]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/98e207f02528a563-s.p.woff2"
+[info] [2026-07-24T14:34:18.951Z] : [1784903658951]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T14:34:18.956Z] : [1784903658955]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T14:34:24.398Z] : [1784903664398]  Appsail[ksp-crime-platform]  "GET"  "/api/reports/intelligence"
+[info] [2026-07-24T14:34:25.990Z] : [1784903665990]  Appsail[ksp-crime-platform]  "GET"  "/api/reports/intelligence"
+[info] [2026-07-24T14:34:28.334Z] : [1784903668334]  Appsail[ksp-crime-platform]  "GET"  "/api/reports/intelligence"
+[info] [2026-07-24T14:34:34.930Z] : [1784903674930]  Appsail[ksp-crime-platform]  "GET"  "/risk?_rsc=6jcy8"
+[info] [2026-07-24T14:34:37.177Z] : [1784903677176]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/d39dda1a35da8295.webpack.hot-update.json"
+[info] [2026-07-24T14:34:37.182Z] : [1784903677181]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/d39dda1a35da8295.webpack.hot-update.json"
+[info] [2026-07-24T14:34:37.366Z] : [1784903677365]  Appsail[ksp-crime-platform]  "GET"  "/risk?_rsc=1mvde"
+[info] [2026-07-24T14:34:37.444Z] : [1784903677444]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.d39dda1a35da8295.hot-update.js"
+[info] [2026-07-24T14:34:37.523Z] : [1784903677522]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.d39dda1a35da8295.hot-update.js"
+[info] [2026-07-24T14:34:37.981Z] : [1784903677980]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/risk/page.js"
+[info] [2026-07-24T14:34:40.699Z] : [1784903680699]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1hytb"
+[info] [2026-07-24T14:34:41.078Z] : [1784903681078]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1rve1"
+[info] [2026-07-24T14:34:49.546Z] : [1784903689546]  Appsail[ksp-crime-platform]  "GET"  "/network?_rsc=6jcy8"
+[info] [2026-07-24T14:34:53.202Z] : [1784903693201]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/95c084ffa37f2791.webpack.hot-update.json"
+[info] [2026-07-24T14:34:53.507Z] : [1784903693506]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/95c084ffa37f2791.webpack.hot-update.json"
+[info] [2026-07-24T14:34:53.539Z] : [1784903693538]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.95c084ffa37f2791.hot-update.js"
+[info] [2026-07-24T14:34:53.680Z] : [1784903693679]  Appsail[ksp-crime-platform]  "GET"  "/network?_rsc=iybr4"
+[info] [2026-07-24T14:34:53.841Z] : [1784903693840]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.95c084ffa37f2791.hot-update.js"
+[info] [2026-07-24T14:34:54.111Z] : [1784903694110]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/network/page.js"
+[info] [2026-07-24T14:34:54.505Z] : [1784903694505]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_node_modules_react-force-graph-2d_dist_react-force-graph-2d_mjs.js"
+[info] [2026-07-24T14:34:55.359Z] : [1784903695359]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=Error%3A+node+not+found%3A+case&methodName=%3Cunknown%3E&arguments=&lineNumber=39&column="
+[info] [2026-07-24T14:34:55.666Z] : [1784903695666]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=find&arguments=&lineNumber=16&column=20"
+[info] [2026-07-24T14:34:55.668Z] : [1784903695668]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=initialize&arguments=&lineNumber=73&column=58"
+[info] [2026-07-24T14:34:55.669Z] : [1784903695669]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=force.links&arguments=&lineNumber=110&column=43"
+[info] [2026-07-24T14:34:55.670Z] : [1784903695670]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fforce-graph%2Fdist%2Fforce-graph.mjs&methodName=comp.update&arguments=&lineNumber=895&column=10"
+[info] [2026-07-24T14:34:55.671Z] : [1784903695671]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fkapsule%2Fdist%2Fkapsule.mjs&methodName=eval&arguments=&lineNumber=127&column=16"
+[info] [2026-07-24T14:34:55.681Z] : [1784903695681]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=invokeFunc&arguments=&lineNumber=79&column=23"
+[info] [2026-07-24T14:34:55.999Z] : [1784903695999]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=trailingEdge&arguments=&lineNumber=114&column=20"
+[info] [2026-07-24T14:34:56.002Z] : [1784903696002]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=timerExpired&arguments=&lineNumber=104&column=20"
+[info] [2026-07-24T14:35:07.525Z] : [1784903707524]  Appsail[ksp-crime-platform]  "GET"  "/risk?_rsc=1mvde"
+[info] [2026-07-24T14:35:07.595Z] : [1784903707595]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=Error%3A+node+not+found%3A+case&methodName=%3Cunknown%3E&arguments=&lineNumber=39&column="
+[info] [2026-07-24T14:35:07.603Z] : [1784903707601]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=force.initialize&arguments=&lineNumber=106&column=5"
+[info] [2026-07-24T14:35:07.610Z] : [1784903707609]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Fsimulation.js&methodName=initializeForce&arguments=&lineNumber=120&column=33"
+[info] [2026-07-24T14:35:07.618Z] : [1784903707617]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=find&arguments=&lineNumber=16&column=20"
+[info] [2026-07-24T14:35:07.627Z] : [1784903707627]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Fsimulation.js&methodName=Object.nodes&arguments=&lineNumber=144&column=71"
+[info] [2026-07-24T14:35:07.952Z] : [1784903707952]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fforce-graph%2Fdist%2Fforce-graph.mjs&methodName=comp.update&arguments=&lineNumber=888&column=6"
+[info] [2026-07-24T14:35:07.959Z] : [1784903707958]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fd3-force-3d%2Fsrc%2Flink.js&methodName=initialize&arguments=&lineNumber=73&column=58"
+[info] [2026-07-24T14:35:07.968Z] : [1784903707968]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fkapsule%2Fdist%2Fkapsule.mjs&methodName=eval&arguments=&lineNumber=127&column=16"
+[info] [2026-07-24T14:35:07.975Z] : [1784903707974]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=invokeFunc&arguments=&lineNumber=79&column=23"
+[info] [2026-07-24T14:35:07.985Z] : [1784903707985]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=trailingEdge&arguments=&lineNumber=114&column=20"
+[info] [2026-07-24T14:35:08.454Z] : [1784903708454]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+node+not+found%3A+case%3A39&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Flodash-es%2Fdebounce.js&methodName=timerExpired&arguments=&lineNumber=104&column=20"
+[info] [2026-07-24T14:35:11.532Z] : [1784903711532]  Appsail[ksp-crime-platform]  "GET"  "/alerts?_rsc=1hytb"
+[info] [2026-07-24T14:35:13.928Z] : [1784903713928]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/43f41786e91926a8.webpack.hot-update.json"
+[info] [2026-07-24T14:35:13.930Z] : [1784903713930]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/43f41786e91926a8.webpack.hot-update.json"
+[info] [2026-07-24T14:35:14.270Z] : [1784903714270]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.43f41786e91926a8.hot-update.js"
+[info] [2026-07-24T14:35:14.272Z] : [1784903714272]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.43f41786e91926a8.hot-update.js"
+[info] [2026-07-24T14:35:15.002Z] : [1784903715002]  Appsail[ksp-crime-platform]  "GET"  "/alerts?_rsc=13lws"
+[info] [2026-07-24T14:35:15.269Z] : [1784903715269]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/alerts/page.js"
+[info] [2026-07-24T14:35:17.803Z] : [1784903717803]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=186wt"
+[info] [2026-07-24T14:35:19.984Z] : [1784903719984]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/0209a3b33f97889a.webpack.hot-update.json"
+[info] [2026-07-24T14:35:20.301Z] : [1784903720300]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/0209a3b33f97889a.webpack.hot-update.json"
+[info] [2026-07-24T14:35:20.317Z] : [1784903720317]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.0209a3b33f97889a.hot-update.js"
+[info] [2026-07-24T14:35:20.424Z] : [1784903720423]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1bywf"
+[info] [2026-07-24T14:35:20.641Z] : [1784903720641]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.0209a3b33f97889a.hot-update.js"
+[info] [2026-07-24T14:35:20.880Z] : [1784903720880]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/cases/page.js"
+[info] [2026-07-24T14:36:26.282Z] : [1784903786282]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:36:46.592Z] : [1784903806591]  Appsail[ksp-crime-platform]  "GET"  "/api/reports/intelligence"
+[info] [2026-07-24T14:38:36.258Z] : [1784903916257]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/eba3ebbc50b7f725.webpack.hot-update.json"
+[info] [2026-07-24T14:38:36.261Z] : [1784903916261]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/eba3ebbc50b7f725.webpack.hot-update.json"
+[info] [2026-07-24T14:38:36.523Z] : [1784903916523]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.eba3ebbc50b7f725.hot-update.js"
+[info] [2026-07-24T14:38:36.527Z] : [1784903916527]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.eba3ebbc50b7f725.hot-update.js"
+[info] [2026-07-24T14:38:36.671Z] : [1784903916670]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.eba3ebbc50b7f725.hot-update.js"
+[info] [2026-07-24T14:38:36.677Z] : [1784903916676]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.eba3ebbc50b7f725.hot-update.js"
+[info] [2026-07-24T14:38:38.314Z] : [1784903918313]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:38:38.321Z] : [1784903918320]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:38:38.628Z] : [1784903918628]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/48c5773a253e9f86.webpack.hot-update.json"
+[info] [2026-07-24T14:38:38.630Z] : [1784903918630]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/48c5773a253e9f86.webpack.hot-update.json"
+[info] [2026-07-24T14:38:39.539Z] : [1784903919539]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903918592"
+[info] [2026-07-24T14:38:39.544Z] : [1784903919544]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.48c5773a253e9f86.hot-update.js"
+[info] [2026-07-24T14:38:39.557Z] : [1784903919556]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903919200"
+[info] [2026-07-24T14:38:39.563Z] : [1784903919563]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.48c5773a253e9f86.hot-update.js"
+[info] [2026-07-24T14:38:39.570Z] : [1784903919569]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.48c5773a253e9f86.hot-update.js"
+[info] [2026-07-24T14:38:39.583Z] : [1784903919582]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.48c5773a253e9f86.hot-update.js"
+[info] [2026-07-24T14:38:40.230Z] : [1784903920229]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:38:58.937Z] : [1784903938936]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:38:58.945Z] : [1784903938944]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:38:59.260Z] : [1784903939260]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/7b5746d2a8194d37.webpack.hot-update.json"
+[info] [2026-07-24T14:38:59.275Z] : [1784903939275]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/7b5746d2a8194d37.webpack.hot-update.json"
+[info] [2026-07-24T14:38:59.706Z] : [1784903939705]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903939366"
+[info] [2026-07-24T14:38:59.709Z] : [1784903939709]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903939072"
+[info] [2026-07-24T14:38:59.712Z] : [1784903939712]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.7b5746d2a8194d37.hot-update.js"
+[info] [2026-07-24T14:38:59.721Z] : [1784903939721]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.7b5746d2a8194d37.hot-update.js"
+[info] [2026-07-24T14:38:59.725Z] : [1784903939724]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.7b5746d2a8194d37.hot-update.js"
+[info] [2026-07-24T14:38:59.728Z] : [1784903939728]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.7b5746d2a8194d37.hot-update.js"
+[info] [2026-07-24T14:39:00.068Z] : [1784903940068]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:39:15.988Z] : [1784903955988]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:39:15.993Z] : [1784903955993]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:39:16.296Z] : [1784903956295]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903956057"
+[info] [2026-07-24T14:39:16.310Z] : [1784903956309]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903956117"
+[info] [2026-07-24T14:39:16.454Z] : [1784903956454]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/d16bb5184caba6a9.webpack.hot-update.json"
+[info] [2026-07-24T14:39:16.468Z] : [1784903956468]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/d16bb5184caba6a9.webpack.hot-update.json"
+[info] [2026-07-24T14:39:16.655Z] : [1784903956655]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.d16bb5184caba6a9.hot-update.js"
+[info] [2026-07-24T14:39:16.782Z] : [1784903956782]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.d16bb5184caba6a9.hot-update.js"
+[info] [2026-07-24T14:39:16.785Z] : [1784903956785]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.d16bb5184caba6a9.hot-update.js"
+[info] [2026-07-24T14:39:16.832Z] : [1784903956832]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.d16bb5184caba6a9.hot-update.js"
+[info] [2026-07-24T14:39:16.836Z] : [1784903956836]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:39:21.182Z] : [1784903961182]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:39:21.492Z] : [1784903961491]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903961232"
+[info] [2026-07-24T14:39:21.494Z] : [1784903961494]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:39:21.495Z] : [1784903961495]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/9904828193efa6e9.webpack.hot-update.json"
+[info] [2026-07-24T14:39:21.565Z] : [1784903961565]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/9904828193efa6e9.webpack.hot-update.json"
+[info] [2026-07-24T14:39:21.748Z] : [1784903961748]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903961550"
+[info] [2026-07-24T14:39:21.826Z] : [1784903961826]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.9904828193efa6e9.hot-update.js"
+[info] [2026-07-24T14:39:21.829Z] : [1784903961828]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.9904828193efa6e9.hot-update.js"
+[info] [2026-07-24T14:39:21.905Z] : [1784903961905]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:39:22.096Z] : [1784903962096]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.9904828193efa6e9.hot-update.js"
+[info] [2026-07-24T14:39:22.101Z] : [1784903962101]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.9904828193efa6e9.hot-update.js"
+[info] [2026-07-24T14:39:42.580Z] : [1784903982580]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/66021d28f792a52e.webpack.hot-update.json"
+[info] [2026-07-24T14:39:42.583Z] : [1784903982583]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/66021d28f792a52e.webpack.hot-update.json"
+[info] [2026-07-24T14:39:42.940Z] : [1784903982940]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.66021d28f792a52e.hot-update.js"
+[info] [2026-07-24T14:39:42.942Z] : [1784903982941]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.66021d28f792a52e.hot-update.js"
+[info] [2026-07-24T14:39:42.972Z] : [1784903982971]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.66021d28f792a52e.hot-update.js"
+[info] [2026-07-24T14:39:42.973Z] : [1784903982973]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.66021d28f792a52e.hot-update.js"
+[info] [2026-07-24T14:39:44.617Z] : [1784903984617]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:39:44.619Z] : [1784903984619]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:39:45.401Z] : [1784903985401]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903985070"
+[info] [2026-07-24T14:39:45.403Z] : [1784903985403]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903984737"
+[info] [2026-07-24T14:39:45.734Z] : [1784903985734]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:39:55.669Z] : [1784903995668]  Appsail[ksp-crime-platform]  "GET"  "/api/reports/intelligence"
+[info] [2026-07-24T14:39:56.831Z] : [1784903996831]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T14:39:57.146Z] : [1784903997145]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T14:39:57.669Z] : [1784903997669]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903997285"
+[info] [2026-07-24T14:39:57.717Z] : [1784903997717]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784903997371"
+[info] [2026-07-24T14:39:58.048Z] : [1784903998048]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:40:05.776Z] : [1784904005776]  Appsail[ksp-crime-platform]  "GET"  "/network"
+[debug] [2026-07-24T14:40:06.102Z] : proxy closed
+[info] [2026-07-24T14:40:06.409Z] : [1784904006409]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784904005846"
+[info] [2026-07-24T14:40:06.412Z] : [1784904006411]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784904005846"
+[info] [2026-07-24T14:40:06.413Z] : [1784904006413]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784904005846"
+[info] [2026-07-24T14:40:06.744Z] : [1784904006743]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T14:40:06.754Z] : [1784904006754]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T14:40:07.414Z] : [1784904007414]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/network/page.js"
+[info] [2026-07-24T14:40:07.417Z] : [1784904007416]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T14:40:07.747Z] : [1784904007747]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T14:40:08.158Z] : [1784904008158]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T14:40:08.190Z] : [1784904008190]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_node_modules_react-force-graph-2d_dist_react-force-graph-2d_mjs.js"
+[info] [2026-07-24T14:40:08.268Z] : [1784904008268]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[debug] [2026-07-24T15:28:29.703Z] : proxy closed
+[info] [2026-07-24T15:41:17.723Z] : [1784907677721]  Appsail[ksp-crime-platform]  "GET"  "/"
+[debug] [2026-07-24T15:41:17.748Z] : > refreshing access token <
+[debug] [2026-07-24T15:41:17.799Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.in/oauth/v2/token 
+<request body omitted>
+
+[debug] [2026-07-24T15:41:17.994Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 24 Jul 2026 15:41:18 GMT","content-type":"application/json;charset=UTF-8","content-length":"2523","connection":"keep-alive","cache-control":"no-store","x-content-type-options":"nosniff","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[info] [2026-07-24T15:41:22.572Z] : [1784907682572]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T15:41:23.090Z] : [1784907683089]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907682603"
+[info] [2026-07-24T15:41:25.525Z] : [1784907685523]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/98e207f02528a563-s.p.woff2"
+[info] [2026-07-24T15:41:25.526Z] : [1784907685526]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/e4af272ccee01ff0-s.p.woff2"
+[info] [2026-07-24T15:41:25.528Z] : [1784907685528]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/26d4368bf94c0ec4-s.p.woff2"
+[info] [2026-07-24T15:41:25.805Z] : [1784907685804]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:41:26.330Z] : [1784907686330]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T15:41:26.332Z] : [1784907686331]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:41:52.605Z] : [1784907712605]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T15:41:52.965Z] : [1784907712964]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907712667"
+[info] [2026-07-24T15:41:52.973Z] : [1784907712973]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907712667"
+[info] [2026-07-24T15:41:53.275Z] : [1784907713274]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907712667"
+[info] [2026-07-24T15:41:53.279Z] : [1784907713279]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:41:53.282Z] : [1784907713282]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:41:53.288Z] : [1784907713287]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T15:41:53.311Z] : [1784907713310]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:41:54.479Z] : [1784907714478]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:41:54.527Z] : [1784907714526]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T15:41:54.548Z] : [1784907714547]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:41:54.551Z] : [1784907714551]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T15:41:54.730Z] : [1784907714729]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/media/d3ebbfd689654d3a-s.p.woff2"
+[info] [2026-07-24T15:41:56.563Z] : [1784907716563]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:43:03.316Z] : [1784907783316]  Appsail[ksp-crime-platform]  "GET"  "/cases?_rsc=1saz1"
+[info] [2026-07-24T15:43:03.317Z] : [1784907783317]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T15:43:03.318Z] : [1784907783318]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/b1b8d94d8308e943.webpack.hot-update.json"
+[info] [2026-07-24T15:43:03.319Z] : [1784907783319]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/f987c06c40432ea7.webpack.hot-update.json"
+[info] [2026-07-24T15:43:03.571Z] : [1784907783570]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.b1b8d94d8308e943.hot-update.js"
+[info] [2026-07-24T15:43:03.639Z] : [1784907783639]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907783394"
+[info] [2026-07-24T15:43:03.640Z] : [1784907783640]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.b1b8d94d8308e943.hot-update.js"
+[info] [2026-07-24T15:43:03.641Z] : [1784907783641]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.f987c06c40432ea7.hot-update.js"
+[info] [2026-07-24T15:43:03.923Z] : [1784907783923]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/d761c4946f20c21c.webpack.hot-update.json"
+[info] [2026-07-24T15:43:03.986Z] : [1784907783986]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.f987c06c40432ea7.hot-update.js"
+[info] [2026-07-24T15:43:04.590Z] : [1784907784589]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/43cfef010d2a85ee.webpack.hot-update.json"
+[info] [2026-07-24T15:43:05.029Z] : [1784907785029]  Appsail[ksp-crime-platform]  "GET"  "/cases"
+[info] [2026-07-24T15:43:05.138Z] : [1784907785138]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T15:43:05.264Z] : [1784907785264]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.43cfef010d2a85ee.hot-update.js"
+[debug] [2026-07-24T15:43:05.371Z] : proxy closed
+[debug] [2026-07-24T15:43:05.658Z] : proxy closed
+[info] [2026-07-24T15:43:05.754Z] : [1784907785754]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907785093"
+[info] [2026-07-24T15:43:05.758Z] : [1784907785758]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907785093"
+[info] [2026-07-24T15:43:05.868Z] : [1784907785867]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907785369"
+[info] [2026-07-24T15:43:06.067Z] : [1784907786067]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907785093"
+[info] [2026-07-24T15:43:06.085Z] : [1784907786085]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907785369"
+[info] [2026-07-24T15:43:06.092Z] : [1784907786092]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907785369"
+[info] [2026-07-24T15:43:06.199Z] : [1784907786199]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:43:06.211Z] : [1784907786211]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:43:06.525Z] : [1784907786525]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:43:08.060Z] : [1784907788059]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:43:08.062Z] : [1784907788062]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T15:43:08.107Z] : [1784907788107]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:43:08.619Z] : [1784907788618]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T15:43:09.291Z] : [1784907789290]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:43:09.617Z] : [1784907789617]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:09.618Z] : [1784907789618]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T15:43:14.291Z] : [1784907794291]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T15:43:14.293Z] : [1784907794293]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/73d7be2fd16edfdd.webpack.hot-update.json"
+[info] [2026-07-24T15:43:14.558Z] : [1784907794558]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:14.622Z] : [1784907794622]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907794355"
+[info] [2026-07-24T15:43:14.623Z] : [1784907794623]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.73d7be2fd16edfdd.hot-update.js"
+[info] [2026-07-24T15:43:14.624Z] : [1784907794624]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.73d7be2fd16edfdd.hot-update.js"
+[info] [2026-07-24T15:43:14.875Z] : [1784907794875]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:14.939Z] : [1784907794939]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/_app-pages-browser_components_map_CaseMap_jsx.73d7be2fd16edfdd.hot-update.js"
+[info] [2026-07-24T15:43:14.995Z] : [1784907794995]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:33.204Z] : [1784907813203]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T15:43:33.205Z] : [1784907813205]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/253741a8286d41b9.webpack.hot-update.json"
+[info] [2026-07-24T15:43:33.455Z] : [1784907813454]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.253741a8286d41b9.hot-update.js"
+[info] [2026-07-24T15:43:33.538Z] : [1784907813537]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907813254"
+[info] [2026-07-24T15:43:33.541Z] : [1784907813541]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/(app)/dashboard/page.253741a8286d41b9.hot-update.js"
+[info] [2026-07-24T15:43:33.543Z] : [1784907813543]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.253741a8286d41b9.hot-update.js"
+[info] [2026-07-24T15:43:34.046Z] : [1784907814046]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fleaflet%2Fdist%2Fleaflet-src.js&methodName=NewClass._initContainer&arguments=&lineNumber=4206&column=12"
+[info] [2026-07-24T15:43:34.358Z] : [1784907814358]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fleaflet%2Fdist%2Fleaflet-src.js&methodName=NewClass.initialize&arguments=&lineNumber=3248&column=10"
+[info] [2026-07-24T15:43:34.359Z] : [1784907814359]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fleaflet%2Fdist%2Fleaflet-src.js&methodName=new+NewClass&arguments=&lineNumber=301&column=22"
+[info] [2026-07-24T15:43:34.360Z] : [1784907814360]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Freact-leaflet%2Flib%2FMapContainer.js&methodName=eval&arguments=&lineNumber=37&column=25"
+[info] [2026-07-24T15:43:34.362Z] : [1784907814362]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitAttachRef&arguments=&lineNumber=21677&column=37"
+[info] [2026-07-24T15:43:34.363Z] : [1784907814363]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=safelyAttachRef&arguments=&lineNumber=20803&column=5"
+[info] [2026-07-24T15:43:34.414Z] : [1784907814414]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=reappearLayoutEffects&arguments=&lineNumber=23082&column=9"
+[info] [2026-07-24T15:43:34.685Z] : [1784907814684]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseReappearLayoutEffects&arguments=&lineNumber=23142&column=5"
+[info] [2026-07-24T15:43:34.687Z] : [1784907814686]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=reappearLayoutEffects&arguments=&lineNumber=23024&column=9"
+[info] [2026-07-24T15:43:34.688Z] : [1784907814688]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=reappearLayoutEffects&arguments=&lineNumber=23072&column=9"
+[info] [2026-07-24T15:43:34.731Z] : [1784907814730]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21550&column=15"
+[info] [2026-07-24T15:43:34.733Z] : [1784907814733]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:34.736Z] : [1784907814735]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21518&column=9"
+[info] [2026-07-24T15:43:35.015Z] : [1784907815015]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:35.017Z] : [1784907815017]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21488&column=9"
+[info] [2026-07-24T15:43:35.019Z] : [1784907815019]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21577&column=9"
+[info] [2026-07-24T15:43:35.060Z] : [1784907815060]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21418&column=9"
+[info] [2026-07-24T15:43:35.062Z] : [1784907815062]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21552&column=15"
+[info] [2026-07-24T15:43:35.069Z] : [1784907815069]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseReappearLayoutEffects&arguments=&lineNumber=23142&column=5"
+[info] [2026-07-24T15:43:35.332Z] : [1784907815332]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=reappearLayoutEffects&arguments=&lineNumber=23024&column=9"
+[info] [2026-07-24T15:43:35.345Z] : [1784907815345]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:35.348Z] : [1784907815348]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21518&column=9"
+[info] [2026-07-24T15:43:35.375Z] : [1784907815374]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:35.378Z] : [1784907815378]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21488&column=9"
+[info] [2026-07-24T15:43:35.389Z] : [1784907815389]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21577&column=9"
+[info] [2026-07-24T15:43:35.661Z] : [1784907815661]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseReappearLayoutEffects&arguments=&lineNumber=23142&column=5"
+[info] [2026-07-24T15:43:35.674Z] : [1784907815674]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=reappearLayoutEffects&arguments=&lineNumber=23024&column=9"
+[info] [2026-07-24T15:43:35.677Z] : [1784907815677]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:35.695Z] : [1784907815694]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:35.706Z] : [1784907815706]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21488&column=9"
+[info] [2026-07-24T15:43:35.987Z] : [1784907815987]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseReappearLayoutEffects&arguments=&lineNumber=23142&column=5"
+[info] [2026-07-24T15:43:35.999Z] : [1784907815999]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:36.009Z] : [1784907816009]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:36.018Z] : [1784907816018]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21488&column=9"
+[info] [2026-07-24T15:43:36.301Z] : [1784907816301]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseReappearLayoutEffects&arguments=&lineNumber=23142&column=5"
+[info] [2026-07-24T15:43:36.314Z] : [1784907816313]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:36.318Z] : [1784907816317]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:36.643Z] : [1784907816643]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:36.645Z] : [1784907816645]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=commitLayoutEffectOnFiber&arguments=&lineNumber=21407&column=9"
+[info] [2026-07-24T15:43:36.972Z] : [1784907816971]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:37.289Z] : [1784907817289]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:37.600Z] : [1784907817600]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:37.912Z] : [1784907817912]  Appsail[ksp-crime-platform]  "GET"  "/__nextjs_original-stack-frame?isServer=false&isEdgeServer=false&isAppDirectory=true&errorMessage=Error%3A+Map+container+is+already+initialized.&file=webpack-internal%3A%2F%2F%2F%28app-pages-browser%29%2F.%2Fnode_modules%2Fnext%2Fdist%2Fcompiled%2Freact-dom%2Fcjs%2Freact-dom.development.js&methodName=recursivelyTraverseLayoutEffects&arguments=&lineNumber=22926&column=7"
+[info] [2026-07-24T15:43:39.958Z] : [1784907819958]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T15:43:39.968Z] : [1784907819967]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/8b259046f18b853d.webpack.hot-update.json"
+[info] [2026-07-24T15:43:40.302Z] : [1784907820302]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.8b259046f18b853d.hot-update.js"
+[info] [2026-07-24T15:43:40.304Z] : [1784907820304]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.8b259046f18b853d.hot-update.js"
+[debug] [2026-07-24T15:43:40.445Z] : proxy closed
+[info] [2026-07-24T15:43:40.807Z] : [1784907820807]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907820063"
+[info] [2026-07-24T15:43:40.809Z] : [1784907820809]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907820063"
+[info] [2026-07-24T15:43:40.811Z] : [1784907820811]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907820063"
+[info] [2026-07-24T15:43:41.060Z] : [1784907821060]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:43:41.151Z] : [1784907821151]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:43:41.154Z] : [1784907821154]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T15:43:41.385Z] : [1784907821385]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:43:42.957Z] : [1784907822956]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T15:43:43.553Z] : [1784907823552]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:43.559Z] : [1784907823559]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:43:43.561Z] : [1784907823561]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T15:43:52.516Z] : [1784907832516]  Appsail[ksp-crime-platform]  "GET"  "/dashboard?_rsc=1jwkk"
+[info] [2026-07-24T15:43:52.832Z] : [1784907832832]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907832551"
+[info] [2026-07-24T15:43:52.929Z] : [1784907832929]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/ec70a4d0287b7585.webpack.hot-update.json"
+[info] [2026-07-24T15:43:53.499Z] : [1784907833499]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/app/layout.ec70a4d0287b7585.hot-update.js"
+[info] [2026-07-24T15:43:53.502Z] : [1784907833501]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.ec70a4d0287b7585.hot-update.js"
+[info] [2026-07-24T15:43:57.237Z] : [1784907837237]  Appsail[ksp-crime-platform]  "GET"  "/dashboard"
+[info] [2026-07-24T15:43:57.491Z] : [1784907837491]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907837276"
+[info] [2026-07-24T15:43:57.701Z] : [1784907837700]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907837276"
+[info] [2026-07-24T15:43:57.703Z] : [1784907837703]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907837276"
+[info] [2026-07-24T15:43:57.705Z] : [1784907837705]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:43:57.706Z] : [1784907837706]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:43:57.708Z] : [1784907837708]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/dashboard/page.js"
+[info] [2026-07-24T15:43:57.808Z] : [1784907837807]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:43:58.469Z] : [1784907838468]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:43:58.552Z] : [1784907838551]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:43:58.633Z] : [1784907838632]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T15:43:58.636Z] : [1784907838636]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[info] [2026-07-24T15:44:19.866Z] : [1784907859866]  Appsail[ksp-crime-platform]  "GET"  "/districts/2?_rsc=1h81t"
+[info] [2026-07-24T15:44:20.826Z] : [1784907860826]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/e3174ac5ab0f4189.webpack.hot-update.json"
+[info] [2026-07-24T15:44:21.136Z] : [1784907861136]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/4ea18b14f8384bc3.webpack.hot-update.json"
+[info] [2026-07-24T15:44:21.153Z] : [1784907861153]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.e3174ac5ab0f4189.hot-update.js"
+[info] [2026-07-24T15:44:21.420Z] : [1784907861420]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/09a83fff63fe17a9.webpack.hot-update.json"
+[info] [2026-07-24T15:44:21.656Z] : [1784907861656]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/webpack/webpack.09a83fff63fe17a9.hot-update.js"
+[info] [2026-07-24T15:44:21.907Z] : [1784907861906]  Appsail[ksp-crime-platform]  "GET"  "/districts/2"
+[info] [2026-07-24T15:44:21.909Z] : [1784907861909]  Appsail[ksp-crime-platform]  "GET"  "/districts/2?_rsc=1u23d"
+[info] [2026-07-24T15:44:22.060Z] : [1784907862059]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"
+[debug] [2026-07-24T15:44:22.242Z] : proxy closed
+[info] [2026-07-24T15:44:22.548Z] : [1784907862548]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/app/layout.css?v=1784907862027"
+[info] [2026-07-24T15:44:22.559Z] : [1784907862559]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/webpack.js?v=1784907862027"
+[info] [2026-07-24T15:44:22.561Z] : [1784907862560]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/main-app.js?v=1784907862027"
+[info] [2026-07-24T15:44:22.561Z] : [1784907862561]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app-pages-internals.js"
+[info] [2026-07-24T15:44:22.562Z] : [1784907862562]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/layout.js"
+[info] [2026-07-24T15:44:22.576Z] : [1784907862575]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/layout.js"
+[info] [2026-07-24T15:44:22.865Z] : [1784907862865]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/app/(app)/districts/%5BdistrictId%5D/page.js"
+[info] [2026-07-24T15:44:23.200Z] : [1784907863199]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/css/_app-pages-browser_components_map_CaseMap_jsx.css"
+[info] [2026-07-24T15:44:23.294Z] : [1784907863294]  Appsail[ksp-crime-platform]  "GET"  "/api/auth/session"
+[info] [2026-07-24T15:44:23.296Z] : [1784907863296]  Appsail[ksp-crime-platform]  "GET"  "/_next/static/chunks/_app-pages-browser_components_map_CaseMap_jsx.js"
+[info] [2026-07-24T15:44:23.560Z] : [1784907863560]  Appsail[ksp-crime-platform]  "GET"  "/favicon.ico"

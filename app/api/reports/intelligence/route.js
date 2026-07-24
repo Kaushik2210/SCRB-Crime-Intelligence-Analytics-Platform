@@ -3,6 +3,7 @@ import { getSessionUser } from "@/lib/session";
 import { getDashboardSummary } from "@/lib/dashboard";
 import { buildIntelligenceReportHtml } from "@/lib/reportHtml";
 import { renderHtmlToPdfBuffer } from "@/lib/pdfReport";
+import { isDemoMode } from "@/lib/demoData";
 
 export async function GET() {
   const user = await getSessionUser();
@@ -16,8 +17,20 @@ export async function GET() {
   const { riskTiles, anomalies } = summary;
 
   const html = buildIntelligenceReportHtml({ session: user, summary, riskTiles, anomalies });
-  const pdfBuffer = await renderHtmlToPdfBuffer(html);
 
+  // Catalyst SmartBrowz (PDF generation) needs a live Catalyst app context,
+  // which isn't available in local demo mode — so serve a self-contained,
+  // print-ready HTML report (the page has a "Print / Save as PDF" button and
+  // clean print styles) instead. The real SmartBrowz PDF path is used when
+  // running against an actual Catalyst project.
+  if (isDemoMode()) {
+    return new NextResponse(html, {
+      status: 200,
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  }
+
+  const pdfBuffer = await renderHtmlToPdfBuffer(html);
   const filename = `scrb-intelligence-report-${new Date().toISOString().slice(0, 10)}.pdf`;
   return new NextResponse(pdfBuffer, {
     status: 200,

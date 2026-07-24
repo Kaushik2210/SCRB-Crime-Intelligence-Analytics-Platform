@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
 import { getSession } from "@/lib/session";
 import { getDashboardSummary } from "@/lib/dashboard";
 import { getCaseScopeFilter } from "@/lib/scope";
 import { getCaseFlowSankey, getDailyCaseCounts } from "@/lib/analytics";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { KpiCard } from "@/components/shared/KpiCard";
+import { DashboardMap } from "@/components/map/DashboardMap";
 import { TrendLineChart } from "@/components/charts/TrendLineChart";
 import { CategoryBarChart } from "@/components/charts/CategoryBarChart";
 import { CaseFlowSankey } from "@/components/charts/CaseFlowSankey";
@@ -13,14 +13,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileText, TrendingUp, Flame, AlertTriangle, Download } from "lucide-react";
 import Link from "next/link";
-
-// mapbox-gl is a large, client-only library (needs the DOM) — code-split it
-// into its own chunk and skip SSR entirely, same as the network graph's
-// react-force-graph-2d, instead of bundling it into this page's initial JS.
-const DashboardMap = dynamic(() => import("@/components/map/DashboardMap").then((m) => m.DashboardMap), {
-  ssr: false,
-  loading: () => <div className="h-[420px] animate-pulse rounded-lg bg-muted" />,
-});
 
 export default async function DashboardPage() {
   const session = await getSession();
@@ -42,9 +34,14 @@ export default async function DashboardPage() {
             : "Cases, hotspots, and alerts scoped to your jurisdiction."
         }
         actions={
-          <Button variant="outline" size="sm" render={<a href="/api/reports/intelligence" download />}>
+          <Button
+            variant="outline"
+            size="sm"
+            nativeButton={false}
+            render={<a href="/api/reports/intelligence" target="_blank" rel="noopener noreferrer" />}
+          >
             <Download className="size-4" />
-            Download Intelligence Report
+            Intelligence Report
           </Button>
         }
       />

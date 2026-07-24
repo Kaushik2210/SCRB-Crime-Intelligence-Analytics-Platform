@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "52881000000019001",
+      "name": "1DatathonAIDrivenCrimeMgt",
+      "domain": {
+        "id": "50044086604",
+        "name": "1datathonaidrivencrimemgt-60077129878.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60077129878",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

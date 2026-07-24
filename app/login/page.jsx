@@ -28,8 +28,8 @@ export default async function LoginPage() {
           </CardContent>
         </Card>
         <p className="mt-4 text-center text-xs text-muted-foreground">
-          Demo credentials: seed the database, then use one of the KGIDs printed by{" "}
-          <code className="font-mono">npm run db:seed</code>.
+          Demo login — KGID <code className="font-mono">KGID100001</code>, password{" "}
+          <code className="font-mono">Demo@1234</code>.
         </p>
       </div>
     </div>

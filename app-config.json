@@ -1,14 +1,16 @@
 {
-  "command": "npm run start",
-  "stack": "node18",
-  "env_variables": {
-    "NEXTAUTH_URL": "",
-    "NEXTAUTH_SECRET": "",
-    "NEXT_PUBLIC_MAPBOX_TOKEN": ""
-  },
-  "memory": 256,
-  "scripts": {
-    "preserve": "npm install && npm run build",
-    "predeploy": "npm install && npm run build"
-  }
+	"command": "npm run start",
+	"build_path": "./",
+	"stack": "node18",
+	"env_variables": {
+		"NEXTAUTH_URL": "http://localhost:3001",
+		"NEXTAUTH_SECRET": "XghyDCDrcfQtCoL/p3TIMYxNKqp/aR8ZCgD2TfjXHrk=",
+		"DEMO_MODE": "true",
+		"NODE_ENV": "development"
+	},
+	"memory": 256,
+	"scripts": {
+		"preserve": "npm install && npm run build",
+		"predeploy": "npm install && npm run build"
+	}
 }

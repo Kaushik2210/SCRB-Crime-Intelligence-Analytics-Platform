@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CaseMap } from "@/components/map/CaseMap";
+import { LazyCaseMap } from "@/components/map/LazyCaseMap";
 
 /** `navigateToDistrict`: when true, clicking a marker navigates to /districts/[id] (analyst statewide view). */
 export function DashboardMap({ points, initialLat, initialLng, initialZoom, navigateToDistrict }) {
   const router = useRouter();
 
   return (
-    <CaseMap
+    <LazyCaseMap
       points={points}
       initialLat={initialLat}
       initialLng={initialLng}

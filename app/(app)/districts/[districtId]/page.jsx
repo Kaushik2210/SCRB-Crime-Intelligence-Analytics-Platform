@@ -1,20 +1,13 @@
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/session";
 import { resolveAllowedDistrictId } from "@/lib/scope";
 import { getDistrictDrilldown } from "@/lib/district";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { KpiCard } from "@/components/shared/KpiCard";
+import { LazyCaseMap } from "@/components/map/LazyCaseMap";
 import { HotspotTimeRange } from "@/components/district/HotspotTimeRange";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Flame, TrendingUp, ShieldOff } from "lucide-react";
-
-// See app/(app)/dashboard/page.jsx for why mapbox-gl is dynamically imported
-// with ssr:false instead of a static import.
-const CaseMap = dynamic(() => import("@/components/map/CaseMap").then((m) => m.CaseMap), {
-  ssr: false,
-  loading: () => <div className="h-[420px] animate-pulse rounded-lg bg-muted" />,
-});
 
 export default async function DistrictPage({ params }) {
   const { districtId: districtIdParam } = await params;
@@ -61,7 +54,7 @@ export default async function DistrictPage({ params }) {
             <CardTitle className="font-heading text-base">Station map &amp; spatial hotspots</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
-            <CaseMap points={data.stationPoints} initialLat={data.center.lat} initialLng={data.center.lng} initialZoom={9.5} />
+            <LazyCaseMap points={data.stationPoints} initialLat={data.center.lat} initialLng={data.center.lng} initialZoom={9.5} />
             <HotspotTimeRange districtId={data.districtId} initialHotspots={data.hotspots} />
           </CardContent>
         </Card>
