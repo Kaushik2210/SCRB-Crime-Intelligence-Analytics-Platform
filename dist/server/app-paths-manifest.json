@@ -1,11 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
-  "/(app)/network/page": "app/(app)/network/page.js",
-  "/(app)/risk/page": "app/(app)/risk/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/(app)/alerts/page": "app/(app)/alerts/page.js",
-  "/(app)/cases/page": "app/(app)/cases/page.js",
-  "/(app)/districts/[districtId]/page": "app/(app)/districts/[districtId]/page.js"
+  "/(app)/network/page": "app/(app)/network/page.js",
+  "/(app)/dashboard/page": "app/(app)/dashboard/page.js"
 }
