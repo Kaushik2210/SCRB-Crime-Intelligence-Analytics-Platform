@@ -47,7 +47,6 @@ Then open **http://localhost:3001**.
 > own CLI server and offsets AppSail to the next port. `NEXTAUTH_URL` in `.env` and
 > `app-config.json` must match whatever port the app actually lands on, or sign-in redirects
 > break.
-
 `npm run dev` runs `catalyst serve`, **not** `next dev`. This matters: the app needs the custom
 [server.js](server.js) wrapper to bind the Catalyst SDK to each incoming request (see
 [Architecture notes](#architecture-notes)). Running `next dev` directly bypasses `server.js`,
