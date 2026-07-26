@@ -1,5 +1,13 @@
 # Catalyst Data Store schema (migrated from `prisma/schema.prisma`)
 
+> **Status: provisioned.** All 28 tables and 123 columns now exist in the Catalyst
+> project `1DatathonAIDrivenCrimeMgt` (ID `52881000000019001`, Development env).
+> The authoritative column list is [`scripts/datastoreSchema.js`](../scripts/datastoreSchema.js),
+> transcribed from [`Police_FIR_ER_Diagram.pdf`](./Police_FIR_ER_Diagram.pdf); see
+> [`catalyst-apply-schema.md`](./catalyst-apply-schema.md) for how to re-apply it.
+> The ER diagram is the source of truth and supersedes the Prisma-derived shape
+> described below wherever the two differ.
+
 This is the target schema for Phase 1 of the Catalyst migration (see the approved
 migration plan). It mirrors every Prisma model 1:1 in shape; the differences below are
 forced by how Catalyst Data Store actually works, confirmed against Catalyst's own docs

@@ -1,5 +1,4 @@
 const bcrypt = require("bcryptjs");
-const { getTable } = require("./catalystAdminClient");
 
 // ---------------------------------------------------------------------------
 // Small deterministic PRNG so re-running the seed produces a stable, reviewable
@@ -24,11 +23,28 @@ function daysAgo(days) {
   d.setDate(d.getDate() - days);
   return d;
 }
-function iso(date) {
-  return date.toISOString();
+/**
+ * Catalyst's Data Store rejects ISO-8601 strings ("Invalid input value ...
+ * datetime value expected") — DateTime columns want "YYYY-MM-DD HH:MM:SS" and
+ * Date columns want "YYYY-MM-DD".
+ */
+function dt(date) {
+  const d = new Date(date);
+  const p = (n) => String(n).padStart(2, "0");
+  return (
+    `${d.getUTCFullYear()}-${p(d.getUTCMonth() + 1)}-${p(d.getUTCDate())} ` +
+    `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`
+  );
+}
+
+function dateOnly(date) {
+  return dt(date).slice(0, 10);
 }
 
 const DEMO_PASSWORD = "Demo@1234";
+
+/** The ER diagram stores gender as a numeric lookup id (GenderID). */
+const GENDER_ID = { Male: 1, Female: 2, Transgender: 3 };
 
 // ---------------------------------------------------------------------------
 // Synthetic name pools (fictional — never real people)
@@ -146,8 +162,34 @@ const OCCUPATIONS = [
   "Homemaker", "Unemployed", "Daily Wage Labourer", "Self-Employed", "Other",
 ];
 
-async function main() {
-  console.log("Seeding KSP Crime Intelligence Platform demo data (Catalyst Data Store)...");
+/**
+ * Catalyst's Data Store caps how many rows one insert call accepts, so large
+ * batches are split. Returns the inserted rows (with their generated ROWIDs)
+ * in the same order they were passed in — callers rely on that ordering to
+ * wire up foreign keys.
+ */
+const INSERT_CHUNK_SIZE = 100;
+async function insertInChunks(table, rows, label, log) {
+  const inserted = [];
+  for (let i = 0; i < rows.length; i += INSERT_CHUNK_SIZE) {
+    const chunk = rows.slice(i, i + INSERT_CHUNK_SIZE);
+    const result = await table.insertRows(chunk);
+    inserted.push(...result);
+    log(`  ${label}: ${inserted.length}/${rows.length}`);
+  }
+  return inserted;
+}
+
+/**
+ * Seeds the whole synthetic dataset.
+ *
+ * `getTable` is injected rather than imported so this can run either from the
+ * CLI (via scripts/catalystAdminClient.js and OAuth self-client credentials)
+ * or from inside a Catalyst-served request (via lib/zcql.js), which is the
+ * only path available when self-client OAuth credentials aren't configured.
+ */
+async function runSeed({ getTable, log = console.log }) {
+  log("Seeding KSP Crime Intelligence Platform demo data (Catalyst Data Store)...");
 
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
 
@@ -156,15 +198,15 @@ async function main() {
 
   // --- Reference tables --------------------------------------------------
   const caseCategories = await getTable("CaseCategory").insertRows(
-    ["FIR", "UDR", "PAR", "Zero FIR"].map((name) => ({ CategoryName: name }))
+    ["FIR", "UDR", "PAR", "Zero FIR"].map((name) => ({ LookupValue: name }))
   );
   const gravityOffences = await getTable("GravityOffence").insertRows(
-    ["Heinous", "Non-Heinous"].map((name) => ({ GravityName: name }))
+    ["Heinous", "Non-Heinous"].map((name) => ({ LookupValue: name }))
   );
   const caseStatuses = await getTable("CaseStatusMaster").insertRows(
-    ["Under Investigation", "Charge Sheeted", "Closed", "Undetected"].map((name) => ({ StatusName: name }))
+    ["Under Investigation", "Charge Sheeted", "Closed", "Undetected"].map((name) => ({ CaseStatusName: name }))
   );
-  const castes = await getTable("CasteMaster").insertRows(CASTES.map((name) => ({ CasteName: name })));
+  const castes = await getTable("CasteMaster").insertRows(CASTES.map((name) => ({ caste_master_name: name })));
   const religions = await getTable("ReligionMaster").insertRows(RELIGIONS.map((name) => ({ ReligionName: name })));
   const occupations = await getTable("OccupationMaster").insertRows(
     OCCUPATIONS.map((name) => ({ OccupationName: name }))
@@ -175,25 +217,32 @@ async function main() {
   const crimeHeadMap = new Map();
   const subHeadMap = new Map();
   for (const [headName, subHeads] of Object.entries(CRIME_HEADS)) {
-    const head = await crimeHeadTable.insertRow({ CrimeHeadName: headName });
+    const head = await crimeHeadTable.insertRow({ CrimeGroupName: headName, Active: true });
     crimeHeadMap.set(headName, head);
+    let seq = 1;
     for (const subName of subHeads) {
-      const sub = await crimeSubHeadTable.insertRow({ CrimeHeadID: head.ROWID, CrimeSubHeadName: subName });
+      // Per the ER diagram, CrimeSubHead's own name column is `CrimeHeadName`.
+      const sub = await crimeSubHeadTable.insertRow({
+        CrimeHeadID: head.ROWID,
+        CrimeHeadName: subName,
+        SeqID: seq++,
+      });
       subHeadMap.set(subName, sub);
     }
   }
 
   const actTable = getTable("Act");
   for (const act of ACTS) {
-    await actTable.insertRow({ ActCode: act.code, ActName: act.name });
+    await actTable.insertRow({ ActCode: act.code, ActDescription: act.name, ShortName: act.code, Active: true });
   }
   const sectionTable = getTable("Section");
   const sectionMap = new Map();
   for (const s of SECTIONS) {
     const section = await sectionTable.insertRow({
       ActCode: s.actCode,
-      SectionNumber: s.number,
+      SectionCode: s.number,
       SectionDescription: s.description,
+      Active: true,
     });
     sectionMap.set(`${s.actCode}-${s.number}`, section);
   }
@@ -207,11 +256,10 @@ async function main() {
         const key = `${ref.actCode}-${ref.number}`;
         if (seen.has(key)) continue;
         seen.add(key);
-        const section = sectionMap.get(key);
         await crimeHeadActSectionTable.insertRow({
           CrimeHeadID: head.ROWID,
           ActCode: ref.actCode,
-          SectionID: section.ROWID,
+          SectionCode: ref.number,
         });
       }
     }
@@ -223,7 +271,7 @@ async function main() {
     "Sub-Inspector", "ASI", "Head Constable", "Police Constable",
   ];
   const ranks = await getTable("Rank").insertRows(
-    rankNames.map((name, i) => ({ RankName: name, Hierarchy: i + 1 }))
+    rankNames.map((name, i) => ({ RankName: name, Hierarchy: i + 1, Active: true }))
   );
   const rankByName = new Map(ranks.map((r) => [r.RankName, r]));
 
@@ -236,7 +284,7 @@ async function main() {
     { name: "Constabulary Staff", order: 6 },
   ];
   const designations = await getTable("Designation").insertRows(
-    designationDefs.map((d) => ({ DesignationName: d.name, SortOrder: d.order }))
+    designationDefs.map((d) => ({ DesignationName: d.name, SortOrder: d.order, Active: true }))
   );
   const designationByName = new Map(designations.map((d) => [d.DesignationName, d]));
 
@@ -318,17 +366,27 @@ async function main() {
 
   async function createEmployee(opts) {
     const gender = rand() > 0.75 ? "Female" : "Male";
+    const dobDate = new Date(1965 + randInt(0, 35), randInt(0, 11), randInt(1, 28));
+    const name = syntheticName(gender);
     return employeeTable.insertRow({
       KGID: `KGID${kgidCounter++}`,
-      Name: syntheticName(gender),
-      DOB: iso(new Date(1965 + randInt(0, 35), randInt(0, 11), randInt(1, 28))),
+      // ER-diagram columns...
+      FirstName: name,
+      EmployeeDOB: dateOnly(dobDate),
+      GenderID: GENDER_ID[gender],
+      AppointmentDate: dateOnly(daysAgo(randInt(400, 7000))),
+      PhysicallyChallenged: false,
+      // ...alongside the app-specific auth/display columns (not modelled in the
+      // ER diagram, but required by lib/auth.js and lib/masking.js).
+      Name: name,
+      DOB: dt(dobDate),
       Gender: gender,
+      PasswordHash: passwordHash,
+      VictimClearance: opts.victimClearance,
       DistrictID: opts.districtId,
       UnitID: opts.unitId,
       RankID: rankByName.get(opts.rank).ROWID,
       DesignationID: designationByName.get(opts.designation).ROWID,
-      PasswordHash: passwordHash,
-      VictimClearance: opts.victimClearance,
     });
   }
 
@@ -380,7 +438,7 @@ async function main() {
     }
   }
 
-  console.log(`Created ${analysts.length + stationOfficers.length + districtRecords.length} employees.`);
+  log(`Created ${analysts.length + stationOfficers.length + districtRecords.length} employees.`);
 
   // --- Repeat-offender pool -------------------------------------------------
   // A shared pool of accused identities reused across multiple cases so the
@@ -393,8 +451,11 @@ async function main() {
       gender,
     };
   });
-
   // --- Case data --------------------------------------------------------
+  // Rows are built in memory first and written with chunked `insertRows`
+  // calls. Catalyst's Data Store is a remote HTTP API, so the previous
+  // row-at-a-time approach meant ~8 round-trips per case (~3,400 total) —
+  // minutes of latency, and far too slow to run inside a single request.
   const caseMasterTable = getTable("CaseMaster");
   const complainantTable = getTable("ComplainantDetails");
   const victimTable = getTable("Victim");
@@ -405,7 +466,9 @@ async function main() {
 
   const CASE_COUNT = 420;
   const districtSerial = new Map();
-  let caseCounter = 0;
+
+  const casePayloads = [];
+  const caseExtras = [];
 
   for (let i = 0; i < CASE_COUNT; i++) {
     const district = pick(districtRecords);
@@ -440,16 +503,17 @@ async function main() {
 
     const serial = (districtSerial.get(district.ROWID) ?? 0) + 1;
     districtSerial.set(district.ROWID, serial);
-    const categoryCode = category.CategoryName === "FIR" ? "1" : category.CategoryName === "Zero FIR" ? "2" : category.CategoryName === "UDR" ? "3" : "4";
+    const categoryName = category.LookupValue;
+    const categoryCode = categoryName === "FIR" ? "1" : categoryName === "Zero FIR" ? "2" : categoryName === "UDR" ? "3" : "4";
     const crimeNo = `${categoryCode}${String(districtIndex).padStart(4, "0")}${String(stationIndex).padStart(4, "0")}${registeredDate.getFullYear()}${String(serial).padStart(5, "0")}`;
 
     const lat = jitter(station.Latitude ?? district.CentroidLat, 0.03);
     const lng = jitter(station.Longitude ?? district.CentroidLng, 0.03);
 
-    const caseRecord = await caseMasterTable.insertRow({
+    casePayloads.push({
       CrimeNo: crimeNo,
       CaseNo: `CR-${registeredDate.getFullYear()}-${String(serial).padStart(4, "0")}`,
-      CrimeRegisteredDate: iso(registeredDate),
+      CrimeRegisteredDate: dateOnly(registeredDate),
       PolicePersonID: io.ROWID,
       PoliceStationID: station.ROWID,
       CaseCategoryID: category.ROWID,
@@ -457,45 +521,44 @@ async function main() {
       CrimeMajorHeadID: head.ROWID,
       CrimeMinorHeadID: sub.ROWID,
       CaseStatusID: status.ROWID,
-      IncidentFromDate: iso(incidentFrom),
-      InfoReceivedPSDate: iso(infoReceived),
-      Latitude: lat,
-      Longitude: lng,
+      IncidentFromDate: dt(incidentFrom),
+      IncidentToDate: dt(incidentFrom),
+      InfoReceivedPSDate: dt(infoReceived),
+      // Lowercase per the ER diagram.
+      latitude: lat,
+      longitude: lng,
       BriefFacts: `Synthetic case record: a ${subName.toLowerCase()} incident reported near ${station.UnitName}, under investigation by the local station.`,
     });
-    caseCounter++;
 
     // Complainant
     const complainantGender = rand() > 0.5 ? "Male" : "Female";
-    await complainantTable.insertRow({
-      CaseMasterID: caseRecord.ROWID,
-      Name: syntheticName(complainantGender),
-      Age: randInt(18, 70),
-      Gender: complainantGender,
+    const complainant = {
+      ComplainantName: syntheticName(complainantGender),
+      AgeYear: randInt(18, 70),
+      GenderID: GENDER_ID[complainantGender],
       OccupationID: pick(occupations).ROWID,
       ReligionID: pick(religions).ROWID,
       CasteID: pick(castes).ROWID,
-    });
+    };
 
     // Victims
+    const victims = [];
     const victimCount = randInt(1, 2);
-    const victimIds = [];
     for (let v = 0; v < victimCount; v++) {
       const victimGender = rand() > 0.55 ? "Female" : "Male";
-      const victim = await victimTable.insertRow({
-        CaseMasterID: caseRecord.ROWID,
+      victims.push({
         VictimName: syntheticName(victimGender),
-        Age: randInt(5, 75),
-        Gender: victimGender,
-        VictimPolice: rand() > 0.95,
+        AgeYear: randInt(5, 75),
+        GenderID: GENDER_ID[victimGender],
+        // ER diagram: VarChar holding "1" (police) or "0".
+        VictimPolice: rand() > 0.95 ? "1" : "0",
       });
-      victimIds.push(victim.ROWID);
     }
 
     // Accused — ~70% drawn from the repeat-offender pool to create real network
     // patterns; the rest are one-off synthetic identities.
+    const accused = [];
     const accusedCount = randInt(1, 3);
-    const accusedIds = [];
     for (let a = 0; a < accusedCount; a++) {
       const useRepeat = rand() < 0.7;
       const identity = useRepeat ? pick(repeatOffenderPool) : {
@@ -503,76 +566,135 @@ async function main() {
         age: randInt(18, 55),
         gender: rand() > 0.9 ? "Female" : "Male",
       };
-      const accused = await accusedTable.insertRow({
-        CaseMasterID: caseRecord.ROWID,
-        Name: identity.name,
-        Age: identity.age,
-        Gender: identity.gender,
+      accused.push({
+        AccusedName: identity.name,
+        AgeYear: identity.age,
+        GenderID: GENDER_ID[identity.gender],
         PersonID: `A${a + 1}`,
       });
-      accusedIds.push(accused.ROWID);
     }
 
     // Act/Section association based on the sub-head.
-    const refs = SUBHEAD_SECTIONS[subName] ?? [];
-    for (const ref of refs) {
-      const section = sectionMap.get(`${ref.actCode}-${ref.number}`);
-      await actSectionAssociationTable.insertRow({
-        CaseMasterID: caseRecord.ROWID,
-        ActCode: ref.actCode,
-        SectionID: section.ROWID,
-      });
-    }
+    // ER diagram: ActID/SectionID hold the act code and section code.
+    const actSections = (SUBHEAD_SECTIONS[subName] ?? []).map((ref, idx) => ({
+      ActID: ref.actCode,
+      SectionID: ref.number,
+      ActOrderID: idx + 1,
+      SectionOrderID: idx + 1,
+    }));
 
     // Arrest/Surrender events for ~60% of cases with accused.
-    if (rand() < 0.6 && accusedIds.length > 0) {
+    let arrestPlan = null;
+    if (rand() < 0.6 && accused.length > 0) {
       const eventDate = new Date(registeredDate);
       eventDate.setDate(eventDate.getDate() + randInt(1, 30));
-      for (const accusedId of accusedIds) {
-        if (rand() < 0.75) {
-          await arrestSurrenderTable.insertRow({
-            CaseMasterID: caseRecord.ROWID,
-            IOID: io.ROWID,
-            StateID: state.ROWID,
-            DistrictID: district.ROWID,
-            UnitID: station.ROWID,
-            AccusedMasterID: accusedId,
-            IsAccused: true,
-            IsComplainantAccused: false,
-            EventType: rand() > 0.85 ? "Surrender" : "Arrest",
-            EventDate: iso(eventDate),
-          });
-        }
-      }
+      arrestPlan = {
+        eventDate: dateOnly(eventDate),
+        // Which of this case's accused were actually picked up.
+        includeFlags: accused.map(() => rand() < 0.75),
+        // 1 = Arrest, 2 = Surrender (lookup code per the ER diagram).
+        typeIds: accused.map(() => (rand() > 0.85 ? 2 : 1)),
+      };
     }
 
     // Chargesheet for resolved cases.
-    if (status.StatusName === "Charge Sheeted" || status.StatusName === "Closed" || status.StatusName === "Undetected") {
+    let chargesheetPlan = null;
+    const statusName = status.CaseStatusName;
+    if (statusName === "Charge Sheeted" || statusName === "Closed" || statusName === "Undetected") {
       const reportDate = new Date(registeredDate);
       reportDate.setDate(reportDate.getDate() + randInt(30, 120));
-      const reportType = status.StatusName === "Undetected" ? "Undetected" : status.StatusName === "Closed" && rand() < 0.2 ? "False Case" : "Chargesheet";
-      await chargesheetTable.insertRow({
-        CaseMasterID: caseRecord.ROWID,
-        ReportType: reportType,
-        ReportDate: iso(reportDate),
-        EmployeeID: io.ROWID,
-      });
+      const reportType = statusName === "Undetected" ? "Undetected" : statusName === "Closed" && rand() < 0.2 ? "False Case" : "Chargesheet";
+      chargesheetPlan = {
+        // ER diagram: cstype is a single char — A=Chargesheet, B=False Case, C=Undetected.
+        cstype: reportType === "Chargesheet" ? "A" : reportType === "False Case" ? "B" : "C",
+        csdate: dt(reportDate),
+        PolicePersonID: io.ROWID,
+      };
     }
 
-    if (caseCounter % 50 === 0) {
-      console.log(`  ...${caseCounter}/${CASE_COUNT} cases seeded`);
-    }
+    caseExtras.push({ complainant, victims, accused, actSections, arrestPlan, chargesheetPlan, io, station, district });
   }
 
-  console.log(`Seeded ${caseCounter} CaseMaster records with linked victims, accused, and arrests.`);
-  console.log("\nDemo login credentials (all use password: Demo@1234):");
-  console.log(`  SCRB Analyst (state-level):        ${analysts[0].KGID}`);
-  console.log(`  District Officer (SP, has clearance): ${districtSPs[0].KGID}`);
-  console.log(`  Station Officer (no clearance):    ${stationOfficers[0].KGID}`);
-  console.log("\nDone.");
+  const insertedCases = await insertInChunks(caseMasterTable, casePayloads, "CaseMaster", log);
+  const caseCounter = insertedCases.length;
+
+  // Children that don't need any generated id other than the case's.
+  const complainantRows = [];
+  const victimRows = [];
+  const actSectionRows = [];
+  const chargesheetRows = [];
+  // Accused rows are inserted first (arrests reference AccusedMasterID), so
+  // track which case + plan each one belongs to in insertion order.
+  const accusedRows = [];
+  const accusedOwners = [];
+
+  insertedCases.forEach((caseRow, i) => {
+    const x = caseExtras[i];
+    const caseId = caseRow.ROWID;
+    complainantRows.push({ CaseMasterID: caseId, ...x.complainant });
+    for (const v of x.victims) victimRows.push({ CaseMasterID: caseId, ...v });
+    for (const a of x.actSections) actSectionRows.push({ CaseMasterID: caseId, ...a });
+    if (x.chargesheetPlan) chargesheetRows.push({ CaseMasterID: caseId, ...x.chargesheetPlan });
+    x.accused.forEach((a, ai) => {
+      accusedRows.push({ CaseMasterID: caseId, ...a });
+      accusedOwners.push({ caseId, extras: x, accusedIndex: ai });
+    });
+  });
+
+  const insertedAccused = await insertInChunks(accusedTable, accusedRows, "Accused", log);
+
+  const arrestRows = [];
+  insertedAccused.forEach((accusedRow, idx) => {
+    const owner = accusedOwners[idx];
+    const plan = owner.extras.arrestPlan;
+    if (!plan || !plan.includeFlags[owner.accusedIndex]) return;
+    arrestRows.push({
+      CaseMasterID: owner.caseId,
+      IOID: owner.extras.io.ROWID,
+      ArrestSurrenderStateId: state.ROWID,
+      ArrestSurrenderDistrictId: owner.extras.district.ROWID,
+      PoliceStationID: owner.extras.station.ROWID,
+      AccusedMasterID: accusedRow.ROWID,
+      IsAccused: true,
+      IsComplainantAccused: false,
+      ArrestSurrenderTypeID: plan.typeIds[owner.accusedIndex],
+      ArrestSurrenderDate: plan.eventDate,
+    });
+  });
+
+  await insertInChunks(complainantTable, complainantRows, "ComplainantDetails", log);
+  await insertInChunks(victimTable, victimRows, "Victim", log);
+  await insertInChunks(actSectionAssociationTable, actSectionRows, "ActSectionAssociation", log);
+  await insertInChunks(arrestSurrenderTable, arrestRows, "ArrestSurrender", log);
+  await insertInChunks(chargesheetTable, chargesheetRows, "ChargesheetDetails", log);
+
+  log(`Seeded ${caseCounter} CaseMaster records with linked victims, accused, and arrests.`);
+
+  const credentials = {
+    password: DEMO_PASSWORD,
+    analystKgid: analysts[0].KGID,
+    districtOfficerKgid: districtSPs[0].KGID,
+    stationOfficerKgid: stationOfficers[0].KGID,
+  };
+  log("Done.");
+  return { caseCount: caseCounter, credentials };
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+module.exports = { runSeed };
+
+// CLI entry point — needs OAuth self-client credentials (see
+// scripts/catalystAdminClient.js). Not used when seeding via the app.
+if (require.main === module) {
+  const { getTable } = require("./catalystAdminClient");
+  runSeed({ getTable })
+    .then((r) => {
+      console.log("\nDemo login credentials (all use password: %s):", r.credentials.password);
+      console.log(`  SCRB Analyst (state-level):           ${r.credentials.analystKgid}`);
+      console.log(`  District Officer (SP, has clearance): ${r.credentials.districtOfficerKgid}`);
+      console.log(`  Station Officer (no clearance):       ${r.credentials.stationOfficerKgid}`);
+    })
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
+}

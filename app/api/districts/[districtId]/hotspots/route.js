@@ -8,7 +8,8 @@ export async function GET(request, { params }) {
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { districtId: districtIdParam } = await params;
-  const districtId = Number(districtIdParam);
+  // ROWIDs exceed Number.MAX_SAFE_INTEGER — keep the route param as a string.
+  const districtId = String(districtIdParam);
   const allowedId = resolveAllowedDistrictId(user, districtId);
   if (allowedId == null) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });

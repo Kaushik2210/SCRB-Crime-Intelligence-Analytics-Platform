@@ -20,9 +20,11 @@ function makeSession(overrides) {
 }
 
 describe("getCaseScopeFilter", () => {
+  // ZCQL rejects `1=1` / `1=0` as syntax errors, so the tautologies are
+  // expressed against ROWID instead (see lib/scope.js).
   it("returns an unrestricted filter for state-level analysts", () => {
     const analyst = makeSession({ isStateLevel: true, districtId: null, districtName: null });
-    expect(getCaseScopeFilter(analyst)).toBe("1=1");
+    expect(getCaseScopeFilter(analyst)).toBe("ROWID IS NOT NULL");
   });
 
   it("pins district officers to their own district only", () => {
@@ -30,13 +32,13 @@ describe("getCaseScopeFilter", () => {
     const filter = getCaseScopeFilter(officer);
     expect(filter).toBe("PoliceStationID IN (SELECT ROWID FROM Unit WHERE DistrictID = 3)");
     // Never accidentally returns an unrestricted filter for a non-state-level session.
-    expect(filter).not.toBe("1=1");
+    expect(filter).not.toBe("ROWID IS NOT NULL");
   });
 
   it("fails closed (zero results) when a non-state-level session has no district", () => {
     const orphan = makeSession({ isStateLevel: false, districtId: null });
     const filter = getCaseScopeFilter(orphan);
-    expect(filter).toBe("1=0");
+    expect(filter).toBe("ROWID IS NULL");
   });
 
   it("never lets one officer's filter match another district's cases", () => {
@@ -56,7 +58,7 @@ describe("getCaseScopeFilter", () => {
 describe("getDistrictScopeFilter", () => {
   it("scopes to DistrictID directly for officers, unrestricted for analysts", () => {
     expect(getDistrictScopeFilter(makeSession({ districtId: 5 }))).toBe("DistrictID = 5");
-    expect(getDistrictScopeFilter(makeSession({ isStateLevel: true }))).toBe("1=1");
+    expect(getDistrictScopeFilter(makeSession({ isStateLevel: true }))).toBe("ROWID IS NOT NULL");
   });
 });
 

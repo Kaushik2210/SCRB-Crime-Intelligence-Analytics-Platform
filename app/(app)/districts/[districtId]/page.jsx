@@ -11,7 +11,8 @@ import { FileText, Flame, TrendingUp, ShieldOff } from "lucide-react";
 
 export default async function DistrictPage({ params }) {
   const { districtId: districtIdParam } = await params;
-  const districtId = Number(districtIdParam);
+  // ROWIDs exceed Number.MAX_SAFE_INTEGER — keep the route param as a string.
+  const districtId = String(districtIdParam);
   const session = await getSession();
   const user = session.user;
 
