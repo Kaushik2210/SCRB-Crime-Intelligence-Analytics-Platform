@@ -3,11 +3,10 @@
  "build_path": "./",
  "stack": "node18",
  "env_variables": {
-  "NEXTAUTH_URL": "http://localhost:3001",
+  "NEXTAUTH_URL": "https://ksp-crime-platform-50044086604.development.catalystappsail.in",
   "NEXTAUTH_SECRET": "XghyDCDrcfQtCoL/p3TIMYxNKqp/aR8ZCgD2TfjXHrk=",
   "DEMO_MODE": "false",
-  "NODE_ENV": "production",
-  "SEED_SECRET": "51a5af6af1d289c172f49b9d539d006c"
+  "NODE_ENV": "production"
  },
  "memory": 256,
  "scripts": {

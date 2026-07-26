@@ -1,0 +1,12 @@
+{
+  "name": "ksp-crime-platform",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "next": "14.2.35",
+    "zcatalyst-sdk-node": "^3.4.0"
+  }
+}

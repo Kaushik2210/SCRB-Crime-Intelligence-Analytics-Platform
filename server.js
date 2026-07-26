@@ -1,8 +1,18 @@
 const { createServer } = require("node:http");
+const { AsyncLocalStorage } = require("node:async_hooks");
 const express = require("express");
 const next = require("next");
 const catalyst = require("zcatalyst-sdk-node");
-const { catalystContext } = require("./lib/catalystContext");
+
+// Deliberately NOT `require("./lib/catalystContext")`: that file is ESM, and
+// `require()` of an ESM module only works from Node 22 — AppSail's node18
+// stack would throw ERR_REQUIRE_ESM. Both sides instead resolve the same
+// AsyncLocalStorage through a `Symbol.for` key on globalThis, which is what
+// lib/catalystContext.js does too (see the comment there for why a plain
+// module-level instance isn't enough).
+const CONTEXT_KEY = Symbol.for("ksp.catalystContext");
+const catalystContext =
+  globalThis[CONTEXT_KEY] ?? (globalThis[CONTEXT_KEY] = new AsyncLocalStorage());
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });

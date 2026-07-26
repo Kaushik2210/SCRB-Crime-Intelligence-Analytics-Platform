@@ -1,0 +1,24 @@
+# Catalyst zips the whole source directory before uploading it to AppSail.
+# Without these exclusions it tries to pack node_modules' ~50k files and dies
+# with "EMFILE: too many open files" while writing Archive.zip.
+#
+# AppSail installs dependencies remotely from package.json/package-lock.json,
+# so node_modules must not be uploaded. The build output (dist/) IS uploaded —
+# app-config.json's predeploy script builds it locally before packing.
+
+node_modules/
+.git/
+.next/
+
+# Local-only env file. Runtime configuration comes from app-config.json's
+# env_variables, so shipping .env would only risk leaking local secrets.
+.env
+.env.local
+
+# Dev/CI artefacts with no role at runtime
+tests/
+docs/
+*.log
+catalyst-debug.log
+.vscode/
+.claude/

@@ -1,0 +1,12 @@
+{
+ "command": "npm run start",
+ "build_path": "./",
+ "stack": "node18",
+ "env_variables": {
+  "NEXTAUTH_URL": "https://ksp-crime-platform-50044086604.development.catalystappsail.in",
+  "NEXTAUTH_SECRET": "XghyDCDrcfQtCoL/p3TIMYxNKqp/aR8ZCgD2TfjXHrk=",
+  "DEMO_MODE": "false",
+  "NODE_ENV": "production"
+ },
+ "memory": 256
+}
